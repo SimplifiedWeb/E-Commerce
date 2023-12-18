@@ -1,17 +1,18 @@
 // import { useEffect } from "react";
-import Services_Section_Parent from "../Section_Eight/services_section_parent/Services_Section_Parent";
-import Section_Five_Banner from "../Section_Five/section-5-banner/Section_Five_Banner";
-import Best_Selling_Parent from "../Section_Four/best_selling_parent/Best_Selling_Parent";
-import Footer from "../Section_Nine/footer_section/Footer";
-import Category from "../Section_One/categories/Category";
-import Navbar from "../Section_One/navigation_bar/Navbar";
-import Top_Add_Bar from "../Section_One/navigation_bar/Top_Add_Bar";
-import Slider from "../Section_One/slider/Slider";
-import S_Cards from "../Section_One/small-home-cards/S_Cards";
-import Feature_New_Arrival_Parent from "../Section_Seven/New_Arrival_Parent/Feature_New_Arrival_Parent";
-import Our_Product_Parent from "../Section_Six/our_product_parent/Our_Product_Parent";
-import Categories_Parent from "../Section_Three/category_parent_section/Categories_Parent";
-import Todays_Home from "../Section_Two/Todays_Parent_Section/Todays_Home";
+import Services_Section_Parent from "../home/Section_Eight/services_section_parent/Services_Section_Parent";
+import Section_Five_Banner from "../home/Section_Five/section-5-banner/Section_Five_Banner";
+import Best_Selling_Parent from "../home/Section_Four/best_selling_parent/Best_Selling_Parent";
+import Footer from "../home/Section_Nine/footer_section/Footer";
+import Category from "../home/Section_One/categories/Category";
+// import Category from "../home/Section_One/categories/Category";
+import Navbar from "../home/Section_One/navigation_bar/Navbar";
+import Top_Add_Bar from "../home/Section_One/navigation_bar/Top_Add_Bar";
+import Slider from "../home/Section_One/slider/Slider";
+import S_Cards from "../home/Section_One/small-home-cards/S_Cards";
+import Feature_New_Arrival_Parent from "../home/Section_Seven/New_Arrival_Parent/Feature_New_Arrival_Parent";
+import Our_Product_Parent from "../home/Section_Six/our_product_parent/Our_Product_Parent";
+import Categories_Parent from "../home/Section_Three/category_parent_section/Categories_Parent";
+import Todays_Home from "../home/Section_Two/Todays_Parent_Section/Todays_Home";
 const Home = () => {
   return (
     <>
@@ -19,7 +20,7 @@ const Home = () => {
         <div className="top_ads_bar absolute top-0 left-0 w-[100%]">
           <Top_Add_Bar />
         </div>
-        <div className="navbar h-20 w-full pt-2">
+        <div className="navbar h-20 w-full pt-2 ">
           <Navbar />
         </div>
         <div

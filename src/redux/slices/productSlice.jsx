@@ -9,7 +9,6 @@ const productSlice = createSlice({
     setProduct: (state, actions) => {
       const { category, data } = actions.payload;
       state[category] = data;
-      console.log(state[category]);
     },
   },
 });
