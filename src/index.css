@@ -1,3 +1,69 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: #f2f0ea;
+    --secondary-color: black;
+    --third-color: white;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('../Fonts/OTF/Satoshi-Regular.otf') format('opentype');
+}
+
+body {
+    background-color: var(--third-color);
+    color: var(--secondary-color);
+    font-family: 'Satoshi';
+    font-weight: bold;
+}
+
+/* Category_Card.jsx */
+
+.icon-box {
+    width: 200px;
+    height: auto;
+    padding: 15px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.icon-box:hover {
+    background-color: #db4444;
+    /* bg-[#db4444] */
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: all 100ms ease-in;
+}
+
+.service-card {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.service-icons svg {
+    font-size: 60px;
+}
+
+.service-icons {
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.heading {
+    margin-top: -30px;
+}

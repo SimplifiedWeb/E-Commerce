@@ -1,6 +1,10 @@
+import Home from "./components/pages/home/Home";
+
 const App = () => {
   return (
-    <div className="text-center p-4 bg-red-300">E-commerce Web Application</div>
+    <div>
+      <Home />
+    </div>
   );
 };
 
