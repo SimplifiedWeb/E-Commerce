@@ -9,7 +9,9 @@ const ButtonsGroup = ({ btnType, name }) => {
             <button>{name}</button>
           </div>
         ) : (
-          <div className={`small-button`}>
+          <div
+            className={`small-button w-[200px] bg-[#db4444] text-white p-2 px-2 text-sm rounded-md hover:scale-[0.97] hover:bg-[#f00000]`}
+          >
             <button>{name}</button>
           </div>
         )}
