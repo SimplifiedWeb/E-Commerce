@@ -8,8 +8,10 @@ const Layout = () => {
   return (
     <>
       <Top_Add_Bar />
-      <Navbar />
-      <Outlet />
+      <div className="layout px-28">
+        <Navbar />
+        <Outlet />
+      </div>
       <Footer />
     </>
   );

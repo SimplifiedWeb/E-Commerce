@@ -23,11 +23,11 @@ const Navbar = () => {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/login">Login</Link>
-          </li>
+          </li> */}
           <li>
-            <Link to="/register">Register</Link>
+            <Link to="/register">Sign Up</Link>
           </li>
         </ul>
 

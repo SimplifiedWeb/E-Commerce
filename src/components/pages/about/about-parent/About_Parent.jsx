@@ -8,7 +8,7 @@ import Services_Card_Design from "../../home/Section_Eight/services_card_design/
 const About_Parent = () => {
   return (
     <>
-      <div className="about min-h-[100vh] relative">
+      <div className="about min-h-[100vh]  relative">
         <div className="route">
           <div className="route flex gap-2 absolute top-[4%] left-[6%]">
             <span className="text-[#868686]">Home</span>
@@ -19,7 +19,7 @@ const About_Parent = () => {
         <div className="first-section flex flex-wrap  absolute top-[10%] left-[5%] p-5">
           <div className="left flex-1 flex flex-col justify-start items-start gap-1 ">
             <h1 className="text-5xl py-6 mt-7">Out Story</h1>
-            <p className="text-sm ml-1 ">
+            <p className="text-sm  ">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima
               asperiores explicabo voluptate porro libero dolore numquam,
               maiores iste officiis? Eveniet ea quod numquam. Quaerat, natus
@@ -41,7 +41,7 @@ const About_Parent = () => {
               <img
                 src="/images/about/about-first-section.png"
                 alt="about-first-section-image"
-                className="w-[600px] h-[520px] absolute right-0 top-[-4%]"
+                className="w-[600px] h-[520px] absolute right-[-10%] top-[-4%]"
               />
             </div>
           </div>
@@ -125,7 +125,7 @@ const About_Parent = () => {
           </div>
         </div>
       </div>
-      <div className="third-section relative min-h-[50vh] p-5 bg-black ">
+      <div className="third-section relative min-h-[50vh]  p-5 bg-black ">
         <Services_Card_Design about={true} />
       </div>
     </>
