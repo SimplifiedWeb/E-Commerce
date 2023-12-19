@@ -38,3 +38,7 @@ export const buttonGroupPropTypes = {
 export const bannersPropTypes = {
   imagePath : PropTypes.string.isRequired
 }
+
+export const serviceCardDesignPropTypes = {
+  about : PropTypes.bool,
+}

@@ -1,8 +1,9 @@
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 import PriceCheckOutlinedIcon from "@mui/icons-material/PriceCheckOutlined";
+import { serviceCardDesignPropTypes } from "../../../../prop-types";
 
-const Services_Card_Design = () => {
+const Services_Card_Design = ({ about }) => {
   return (
     <>
       <div>
@@ -12,7 +13,9 @@ const Services_Card_Design = () => {
           className="flex w-full justify-center items-center gap-32 my-10"
         >
           <div
-            className="first-card service-card w-[250px] h-[250px] bg-[#fff] "
+            className={`first-card service-card w-[250px] h-[250px] ${
+              about ? "bg-black text-white" : "bg-[#fff]"
+            }`}
             style={{
               boxShadow:
                 "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
@@ -27,7 +30,9 @@ const Services_Card_Design = () => {
             </div>
           </div>
           <div
-            className="second-card service-card w-[250px] h-[250px] bg-[#fff] "
+            className={`first-card service-card w-[250px] h-[250px] ${
+              about ? "bg-black text-white" : "bg-[#fff]"
+            }`}
             style={{
               boxShadow:
                 "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
@@ -45,7 +50,9 @@ const Services_Card_Design = () => {
             </div>
           </div>
           <div
-            className="third-card service-card w-[250px] h-[250px] bg-[#fff] "
+            className={`first-card service-card w-[250px] h-[250px] ${
+              about ? "bg-black text-white" : "bg-[#fff]"
+            }`}
             style={{
               boxShadow:
                 "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
@@ -66,5 +73,7 @@ const Services_Card_Design = () => {
     </>
   );
 };
+
+Services_Card_Design.propTypes = serviceCardDesignPropTypes;
 
 export default Services_Card_Design;
