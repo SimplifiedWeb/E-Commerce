@@ -12,7 +12,7 @@ const Contact_Form = () => {
       <div className="contact-form w-[700px] relative ">
         <div className="contact flex flex-col  items-center h-[500px] relative">
           <div className="top flex gap-3 p-4">
-            <div className="input ">
+            <div className="input font-semibold ">
               <input
                 type="text"
                 placeholder="Your Name "

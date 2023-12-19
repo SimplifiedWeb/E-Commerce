@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ContactParent from "./components/pages/contact/contact-parent/Contact_Parent";
 import AboutParent from "./components/pages/about/about-parent/About_Parent";
@@ -7,6 +6,8 @@ import Login from "./components/pages/auth/login/Login";
 import Logout from "./components/pages/auth/logout/Logout";
 import Register from "./components/pages/auth/register/Register";
 import Layout from "./components/router/shared/Layout";
+import WishList_Parent from "./components/wishList/wishList-parent/WishList_Parent";
+import Cart_Parent from "./components/cart/Shopping/Cart_Parent";
 
 const App = () => {
   return (
@@ -19,6 +20,8 @@ const App = () => {
           <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<ContactParent />} />
+          <Route path="/wishList" element={<WishList_Parent />} />
+          <Route path="/cart" element={<Cart_Parent />} />
         </Route>
       </Routes>
     </Router>

@@ -7,6 +7,7 @@ import { flash_sales_data } from "../../../Data/Flash_Sales";
 import { computer_tech_data } from "../../../Data/Computer_And_Tech";
 import { other_products_data } from "../../../Data/Other_Products";
 import { our_products_data } from "../../../Data/Our_Products";
+import { randomObjects } from "../../helper";
 
 const ProductsHook = (category) => {
   const dispatch = useDispatch();
@@ -52,6 +53,9 @@ const ProductsHook = (category) => {
         break;
       case "our_products_data":
         setStore(our_products_data);
+        break;
+      case "random_products":
+        setStore(randomObjects);
         break;
       default:
         setStore([]);

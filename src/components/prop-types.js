@@ -7,6 +7,7 @@ export const productHeadingPropTypes = {
 export const productCardPropTypes = {
   category: PropTypes.string.isRequired,
   flexWrap: PropTypes.bool,
+  btn: PropTypes.bool,
 };
 
 export const productCardDesignPropTypes = {
@@ -31,14 +32,14 @@ export const productSecondLayerHeadingPropTypes = {
 };
 
 export const buttonGroupPropTypes = {
-  btnType : PropTypes.string.isRequired,
-  name : PropTypes.string.isRequired,
-}
+  btnType: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 export const bannersPropTypes = {
-  imagePath : PropTypes.string.isRequired
-}
+  imagePath: PropTypes.string.isRequired,
+};
 
 export const serviceCardDesignPropTypes = {
-  about : PropTypes.bool,
-}
+  about: PropTypes.bool,
+};

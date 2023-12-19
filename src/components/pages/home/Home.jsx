@@ -1,8 +1,8 @@
-// import { useEffect } from "react";
 import Services_Section_Parent from "../home/Section_Eight/services_section_parent/Services_Section_Parent";
 import Section_Five_Banner from "../home/Section_Five/section-5-banner/Section_Five_Banner";
 import Best_Selling_Parent from "../home/Section_Four/best_selling_parent/Best_Selling_Parent";
 import Footer from "../home/Section_Nine/footer_section/Footer";
+
 import Category from "../home/Section_One/categories/Category";
 // import Category from "../home/Section_One/categories/Category";
 import Navbar from "../home/Section_One/navigation_bar/Navbar";

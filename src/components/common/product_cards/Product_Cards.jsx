@@ -3,7 +3,7 @@ import { productCardPropTypes } from "../../prop-types";
 import ButtonsGroup from "../buttons/ButtonsGroup";
 import Product_Cards_Design from "./Product_Cards_Design";
 
-const Product_Cards = ({ category, flexWrap }) => {
+const Product_Cards = ({ category, flexWrap, btn }) => {
   const { data } = ProductsHook(category);
 
   return (
@@ -27,9 +27,13 @@ const Product_Cards = ({ category, flexWrap }) => {
             );
           })}
       </div>
-      <div className="button w-full ">
-        <ButtonsGroup btnType={"largeBtn"} name={"View All Products"} />
-      </div>
+      {btn ? (
+        <div className="button w-full ">
+          <ButtonsGroup btnType={"largeBtn"} name={"View All Products"} />
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };

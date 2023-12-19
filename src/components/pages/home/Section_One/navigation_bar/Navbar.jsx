@@ -42,12 +42,16 @@ const Navbar = () => {
             <SearchIcon
               style={{ width: "50px", height: "30px", marginRight: "50px" }}
             />
-            <FavoriteBorderOutlinedIcon
-              style={{ width: "50px", height: "28px" }}
-            />
-            <ShoppingCartOutlinedIcon
-              style={{ width: "40px", height: "25px" }}
-            />
+            <Link to="/wishList">
+              <FavoriteBorderOutlinedIcon
+                style={{ width: "50px", height: "28px" }}
+              />
+            </Link>
+            <Link to="/cart">
+              <ShoppingCartOutlinedIcon
+                style={{ width: "40px", height: "25px" }}
+              />
+            </Link>
           </div>
           <div className="w-[38px] cursor-pointer rounded-full h-[43px]">
             {/* <img
