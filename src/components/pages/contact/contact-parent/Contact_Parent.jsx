@@ -1,3 +1,4 @@
+
 import Contact_Form from "../contact-form/Contact_Form";
 import Contact_Info from "../contact-information/Contact_Info";
 
@@ -19,6 +20,7 @@ const Contact_Parent = () => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };

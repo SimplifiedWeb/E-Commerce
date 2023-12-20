@@ -13,6 +13,7 @@ import Feature_New_Arrival_Parent from "../home/Section_Seven/New_Arrival_Parent
 import Our_Product_Parent from "../home/Section_Six/our_product_parent/Our_Product_Parent";
 import Categories_Parent from "../home/Section_Three/category_parent_section/Categories_Parent";
 import Todays_Home from "../home/Section_Two/Todays_Parent_Section/Todays_Home";
+// import VerticalLine from "./VerticalLine";
 const Home = () => {
   return (
     <>
@@ -20,8 +21,10 @@ const Home = () => {
         <div className="top_ads_bar absolute top-0 left-0 w-[100%]">
           <Top_Add_Bar />
         </div>
-        <div className="navbar h-20 w-full pt-2 ">
+        <div className="navbar h-20 w-full pt-2 mb-6 z-3 ">
           <Navbar />
+
+          {/* <VerticalLine /> */}
         </div>
         <div
           className="hero-section border-2 pr-5 pt-4   flex"

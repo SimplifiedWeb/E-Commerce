@@ -9,6 +9,7 @@ import Layout from "./components/router/shared/Layout";
 import WishList_Parent from "./components/wishList/wishList-parent/WishList_Parent";
 import Cart_Parent from "./components/cart/Shopping/Cart_Parent";
 import Checkout_Parent from "./components/checkout/checkout-parent/Checkout_Parent";
+import Profile_Parent from "./components/profile/profile-parent/Profile_Parent";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/wishList" element={<WishList_Parent />} />
           <Route path="/cart" element={<Cart_Parent />} />
           <Route path="/checkout" element={<Checkout_Parent />} />
+          <Route path="/profile" element={<Profile_Parent />} />
         </Route>
       </Routes>
     </Router>

@@ -35,7 +35,7 @@ const Slider = () => {
   }, [images]);
 
   return (
-    <div className="slider-container mt-8 mx-auto relative">
+    <div className="slider-container mt-10 mx-auto relative">
       <div className="slider w-[740px] h-[386px] ml-[-20px] mt-[20px] relative overflow-hidden rounded-lg shadow-md">
         <div className="images-container absolute top-0 left-0 w-full h-full">
           {images.map((image, index) => (

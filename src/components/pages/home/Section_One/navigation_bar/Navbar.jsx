@@ -54,14 +54,11 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="w-[38px] cursor-pointer rounded-full h-[43px]">
-            {/* <img
-              src="images/profile_logo.png"
-              alt="profile_logo"
-              className="w-[90%] h-[90%]"
-            /> */}
-            <Person2OutlinedIcon
-              style={{ width: "50px", height: "32px", marginTop: "7px" }}
-            />
+            <Link to="/profile">
+              <Person2OutlinedIcon
+                style={{ width: "50px", height: "32px", marginTop: "7px" }}
+              />
+            </Link>
           </div>
         </div>
       </div>

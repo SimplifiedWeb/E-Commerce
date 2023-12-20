@@ -68,3 +68,17 @@ body {
 .heading {
     margin-top: -30px;
 }
+
+.animate-electricity {
+    animation: electricityAnimation 1s linear infinite;
+}
+
+@keyframes electricityAnimation {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
