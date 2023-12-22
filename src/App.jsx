@@ -10,6 +10,7 @@ import WishList_Parent from "./components/wishList/wishList-parent/WishList_Pare
 import Cart_Parent from "./components/cart/Shopping/Cart_Parent";
 import Checkout_Parent from "./components/checkout/checkout-parent/Checkout_Parent";
 import Profile_Parent from "./components/profile/profile-parent/Profile_Parent";
+import Single_Product_Details_Parent from "./components/product/single-product-detail-parent/Single_Product_Details_Parent";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/cart" element={<Cart_Parent />} />
           <Route path="/checkout" element={<Checkout_Parent />} />
           <Route path="/profile" element={<Profile_Parent />} />
+          <Route path="/single" element={<Single_Product_Details_Parent />} />
         </Route>
       </Routes>
     </Router>

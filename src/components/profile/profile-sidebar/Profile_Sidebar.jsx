@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Profile_Sidebar = () => {
   const customBtn = {
     textAlign: "left",
@@ -24,7 +26,9 @@ const Profile_Sidebar = () => {
           </div>
         </div>
         <div className="third">
-          <button style={customBtn}>My WishList</button>
+          <Link to="/wishList">
+            <button style={customBtn}>My WishList</button>
+          </Link>
         </div>
       </div>
     </>

@@ -17,12 +17,12 @@ export const productCardDesignPropTypes = {
     discount: PropTypes.number,
     image: PropTypes.string,
     product_name: PropTypes.string,
-    rating: PropTypes.number,
+    rating: PropTypes.number || PropTypes.string,
     key: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }),
 };
 export const ratingComponentPropTypes = {
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.string,
 };
 
 export const productSecondLayerHeadingPropTypes = {
@@ -42,4 +42,10 @@ export const bannersPropTypes = {
 
 export const serviceCardDesignPropTypes = {
   about: PropTypes.bool,
+};
+
+export const randomProductFromSingleProductFolder = {
+  image: PropTypes.string.isRequired,
+  current_price: PropTypes.number.isRequired,
+  product_name: PropTypes.string,
 };

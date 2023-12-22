@@ -5,7 +5,7 @@ import Product_Second_Layer_Heading from "../../../../common/product_div_heading
 const Our_Product_Parent = () => {
   return (
     <>
-      <div className="main  min-h-[75vh] pt-4 px-3">
+      <div className="main  min-h-[79vh] pt-4 px-3">
         {/* bg-[#f2f0ea]  */}
         <div className="heading">
           <Product_Main_Heading data={"Our Products"} />

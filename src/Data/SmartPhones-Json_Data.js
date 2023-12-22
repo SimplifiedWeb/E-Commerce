@@ -154,13 +154,11 @@ export const smartPhones_data = [
     ],
     specs: [
       {
-        details: [
-          {
-            property: "In The Box",
-            value:
-              "Handset, Charger, USB Cable, SIM Ejector Pin, Quick Start Guide",
-          },
-        ],
+        details: {
+          property: "In The Box",
+          value:
+            "Handset, Charger, USB Cable, SIM Ejector Pin, Quick Start Guide",
+        },
       },
       {
         os: {

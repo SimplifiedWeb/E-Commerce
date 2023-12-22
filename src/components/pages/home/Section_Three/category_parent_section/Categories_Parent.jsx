@@ -5,7 +5,7 @@ import Category_Cards from "../Category_Cards/Category_Cards";
 const Categories_Parent = () => {
   return (
     <>
-      <div className="categories  min-h-[75vh]  pt-4 px-3">
+      <div className="categories  min-h-[66vh] mt-[-55px]  px-3">
         {/* bg-[#f2f0ea] */}
         <div className="heading">
           <Product_Main_Heading data={"Categories"} />

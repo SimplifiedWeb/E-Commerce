@@ -11,7 +11,7 @@ const Product_Cards = ({ category, flexWrap, btn }) => {
       <div
         className={`cards  ${
           flexWrap
-            ? "flex flex-wrap w-screen justify-center gap-5 mt-5 items-center overflow-visible"
+            ? "flex  flex-wrap w-screen justify-center gap-5 mt-5 items-center "
             : "flex min-w-[120vw] mt-5 mx-4 overflow-hidden"
         }`}
       >

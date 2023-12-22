@@ -5,7 +5,7 @@ import Product_Second_Layer_Heading from "../../../../common/product_div_heading
 const Todays_Home = () => {
   return (
     <>
-      <div className="main  min-h-[75vh]  pt-4 px-3">
+      <div className="main  min-h-[66vh]  pt-4 px-3">
         <div className="heading">
           <Product_Main_Heading data={"Today's"} />
         </div>

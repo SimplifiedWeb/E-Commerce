@@ -24,24 +24,26 @@ const Product_Cards_Design = ({
   return (
     <>
       <div
-        className={`main-card mx-2 w-full rounded-lg p-[4px] pt-[1px] h-[315px] cursor-pointer bg-[#fff]  border-[0.1px] border-gray-900 border-opacity-10 border-b-2 
+        className={`main-card mx-2 w-[400px] rounded-lg p-[4px] pt-[1px] h-[315px] cursor-pointer bg-[#fff]  border-[0.1px] border-gray-900 border-opacity-10 border-b-2 
         ${flexWrap ? " lg:w-[250px] mt-3 " : ""}
         `}
         style={{
           boxShadow:
             "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
+          // width: "400px",
         }}
       >
         <div
-          className="top-section relative"
+          className="top-section relative flex flex-col justify-center items-center"
           onMouseEnter={handleEnter}
           onMouseLeave={handleLeave}
         >
-          <div className="image-container ">
+          <div className="image-container w-[200px] ">
             <img
               src={image}
               alt={product_name}
               className="object-contain mix-blend-multiply w-[300px] h-[210px]"
+              style={{ width: "300px" }}
             />
           </div>
           <div className="discount bg-[#db4444] w-11 rounded-md text-xs p-1 absolute top-0 left-0">

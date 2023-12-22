@@ -17,8 +17,8 @@ const getRandomObject = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const getRandomCategoryObject = (categoryData) => getRandomObject(categoryData);
 
 // Function to generate random objects for multiple categories
-const getRandomObjectsForCategories = (...categories) =>
-  categories.map((category) => getRandomCategoryObject(category));
+// const getRandomObjectsForCategories = (...categories) =>
+//   categories.map((category) => getRandomCategoryObject(category));
 
 // Categories mapped to their respective data arrays
 const categoriesMap = {

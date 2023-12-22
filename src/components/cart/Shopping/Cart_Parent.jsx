@@ -1,9 +1,10 @@
 import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
+import { Link } from "react-router-dom";
 const Cart_Parent = () => {
   return (
     <>
-      <div className="cart min-h-[100vh] flex flex-col  flex-wrap relative">
-        <div className="route">
+      <div className="cart min-h-[105vh] flex flex-col  flex-wrap relative">
+        <div className="route ">
           <div className="route flex gap-2 absolute top-[4%] left-[6%]">
             <span className="text-[#868686]">Home</span>
             <span className="text-[#868686]">/</span>
@@ -11,7 +12,7 @@ const Cart_Parent = () => {
           </div>
         </div>
         <div className="absolute top-12 left-7 w-[70vw] bg-white p-6 shadow-md">
-          <div className="cart-heading flex justify-between items-center font-[600] mb-4 ">
+          <div className="cart-heading flex justify-between items-center font-[600] p-2 mb-4 ">
             <div className="product flex-1 text-center">Product</div>
             <div className="price flex-1 text-center">Price</div>
             <div className="quantity flex-1 text-center">Quantity</div>
@@ -106,9 +107,11 @@ const Cart_Parent = () => {
                   <span>$800</span>
                 </div>
                 <div className="text-center">
-                  <button className="w-[200px] bg-[#db4444] text-white p-3 rounded-md hover:scale-[0.97] hover:bg-[#f00000]">
-                    Process Checkout
-                  </button>
+                  <Link to="/checkout">
+                    <button className="w-[200px] bg-[#db4444] text-white p-3 rounded-md hover:scale-[0.97] hover:bg-[#f00000]">
+                      Process Checkout
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
