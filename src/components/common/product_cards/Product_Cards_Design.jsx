@@ -38,7 +38,7 @@ const Product_Cards_Design = ({
           onMouseEnter={handleEnter}
           onMouseLeave={handleLeave}
         >
-          <div className="image-container w-[200px] ">
+          <div className="image-container w-[250px] ">
             <img
               src={image}
               alt={product_name}

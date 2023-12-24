@@ -71,7 +71,7 @@ const Home = () => {
           <Services_Section_Parent />
         </div>
       </div>
-      <div className="p-10 bg-black">
+      <div className="p-10 bg-black z-20">
         <Footer />
       </div>
     </>

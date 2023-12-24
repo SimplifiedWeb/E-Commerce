@@ -1,6 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import InputTargets from "../../../hooks/useInput/InputTargets";
+import { getAuth } from "../authContext/AuthContext";
+// import { signInWithEmailAndPassword } from "firebase/auth";
+// import { auth } from "../../../../../config/Firebase";
 
 const Login = () => {
+  const initialValue = {
+    email: "",
+    password: "",
+  };
+  const { login } = getAuth();
+  const navigate = useNavigate();
+  const onSubmit = async (values) => {
+    try {
+      const { email, password } = values;
+      await login(email, password);
+      navigate("/");
+      // const data = await signInWithEmailAndPassword(
+      //   auth,
+      //   values.email,
+      //   values.password
+      // );
+      // console.log("Success log in", data);
+    } catch (error) {
+      console.log("Credential are wrong");
+    }
+  };
+
+  const { values, handleSubmit, handleChange } = InputTargets(
+    initialValue,
+    onSubmit
+  );
+
   return (
     <>
       <div className="login min-h-[100vh] flex flex-wrap relative">
@@ -21,20 +52,30 @@ const Login = () => {
               <input
                 type="text"
                 placeholder="Email or Phone Number"
+                onChange={handleChange}
+                values={values?.email}
+                name="email"
                 className="focus:outline-none border-b-[1.6px]   border-gray-400 py-2"
               />
               <input
                 type="password"
                 placeholder="Password"
+                onChange={handleChange}
+                values={values?.password}
+                name="password"
                 className="focus:outline-none border-b-[1.6px] border-gray-400 py-2"
               />
             </div>
             <div className="third-section w-full flex justify-around  items-center">
-              <button className="w-[200px] bg-[#db4444] text-white p-3 rounded-md hover:scale-[0.97] hover:bg-[#f00000]">
+              <button
+                type="submit"
+                onClick={handleSubmit}
+                className="w-[200px] bg-[#db4444] text-white p-3 rounded-md hover:scale-[0.97] hover:bg-[#f00000]"
+              >
                 Log in
               </button>
               <button className="bg-inherit text-[#db4444] w-full  mt-4  mr-[-30px]   ">
-                Forget Password?
+                <Link to="/forget-password">Forget Password?</Link>
               </button>
             </div>
           </div>

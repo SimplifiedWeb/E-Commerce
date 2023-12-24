@@ -1,35 +1,85 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ContactParent from "./components/pages/contact/contact-parent/Contact_Parent";
-import AboutParent from "./components/pages/about/about-parent/About_Parent";
-import Home from "./components/pages/home/Home";
-import Login from "./components/pages/auth/login/Login";
-import Logout from "./components/pages/auth/logout/Logout";
-import Register from "./components/pages/auth/register/Register";
-import Layout from "./components/router/shared/Layout";
-import WishList_Parent from "./components/wishList/wishList-parent/WishList_Parent";
-import Cart_Parent from "./components/cart/Shopping/Cart_Parent";
-import Checkout_Parent from "./components/checkout/checkout-parent/Checkout_Parent";
-import Profile_Parent from "./components/profile/profile-parent/Profile_Parent";
-import Single_Product_Details_Parent from "./components/product/single-product-detail-parent/Single_Product_Details_Parent";
+import Loading from "./components/common/spinner/Loading";
+import AuthProvider from "./components/pages/auth/authContext/AuthContext";
+import Protected_Auth_Route from "./components/pages/auth/protected-auth-route/Protected_Auth_Route";
+
+const Home = lazy(() => import("./components/pages/home/Home"));
+const AboutParent = lazy(() =>
+  import("./components/pages/about/about-parent/About_Parent")
+);
+const Login = lazy(() => import("./components/pages/auth/login/Login"));
+const Logout = lazy(() => import("./components/pages/auth/logout/Logout"));
+const Register = lazy(() =>
+  import("./components/pages/auth/register/Register")
+);
+const ContactParent = lazy(() =>
+  import("./components/pages/contact/contact-parent/Contact_Parent")
+);
+const WishListParent = lazy(() =>
+  import("./components/wishList/wishList-parent/WishList_Parent")
+);
+const CartParent = lazy(() => import("./components/cart/Shopping/Cart_Parent"));
+const CheckoutParent = lazy(() =>
+  import("./components/checkout/checkout-parent/Checkout_Parent")
+);
+const ProfileParent = lazy(() =>
+  import("./components/profile/profile-parent/Profile_Parent")
+);
+const SingleProductDetailsParent = lazy(() =>
+  import(
+    "./components/product/single-product-detail-parent/Single_Product_Details_Parent"
+  )
+);
+const Layout = lazy(() => import("./components/router/shared/Layout"));
 
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/" element={<Layout />}>
-          <Route path="/about" element={<AboutParent />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/contact" element={<ContactParent />} />
-          <Route path="/wishList" element={<WishList_Parent />} />
-          <Route path="/cart" element={<Cart_Parent />} />
-          <Route path="/checkout" element={<Checkout_Parent />} />
-          <Route path="/profile" element={<Profile_Parent />} />
-          <Route path="/single" element={<Single_Product_Details_Parent />} />
-        </Route>
-      </Routes>
+      <AuthProvider>
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route
+              path="/" // Change 'index' to 'path'
+              element={<Layout />}
+            >
+              {/* Nested Routes */}
+              <Route path="/about" element={<AboutParent />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/logout" element={<Logout />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/contact" element={<ContactParent />} />
+              <Route
+                path="/wishList"
+                element={
+                  <Protected_Auth_Route>
+                    <WishListParent />
+                  </Protected_Auth_Route>
+                }
+              />
+              <Route
+                path="/cart"
+                element={
+                  <Protected_Auth_Route>
+                    <CartParent />
+                  </Protected_Auth_Route>
+                }
+              />
+              <Route
+                path="/checkout"
+                element={
+                  <Protected_Auth_Route>
+                    <CheckoutParent />
+                  </Protected_Auth_Route>
+                }
+              />
+              <Route path="/profile" element={<ProfileParent />} />
+              <Route path="/single" element={<SingleProductDetailsParent />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </AuthProvider>
     </Router>
   );
 };
