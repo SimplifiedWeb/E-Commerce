@@ -8,6 +8,7 @@ export const productCardPropTypes = {
   category: PropTypes.string.isRequired,
   flexWrap: PropTypes.bool,
   btn: PropTypes.bool,
+  mainList: PropTypes.bool,
 };
 
 export const productCardDesignPropTypes = {
@@ -17,6 +18,7 @@ export const productCardDesignPropTypes = {
     discount: PropTypes.number,
     image: PropTypes.string,
     product_name: PropTypes.string,
+    mainList: PropTypes.bool,
     rating: PropTypes.number || PropTypes.string,
     key: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }),
@@ -27,7 +29,7 @@ export const ratingComponentPropTypes = {
 
 export const productSecondLayerHeadingPropTypes = {
   check: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   arrow: PropTypes.bool,
 };
 

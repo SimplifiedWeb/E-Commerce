@@ -13,7 +13,7 @@ const Todays_Home = () => {
           <Product_Second_Layer_Heading check={true} name={"Flash Sales"} />
         </div>
         <div className="content overflow-hidden ">
-          <Product_Cards category={"flash_sales_data"} />
+          <Product_Cards category={"flash"} />
         </div>
       </div>
     </>

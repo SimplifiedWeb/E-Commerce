@@ -16,7 +16,7 @@ const Best_Selling_Parent = () => {
           />
         </div>
         <div className="content overflow-hidden ">
-          <Product_Cards category={"other_products_data"} />
+          <Product_Cards category={"otherProducts"} />
         </div>
       </div>
     </>

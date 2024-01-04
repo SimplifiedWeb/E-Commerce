@@ -17,7 +17,7 @@ const Our_Product_Parent = () => {
           />
         </div>
         <div className="content flex flex-wrap  m-auto ">
-          <Product_Cards category={"our_products_data"} flexWrap={true} />
+          <Product_Cards category={"randomProducts"} flexWrap={true} />
         </div>
       </div>
     </>

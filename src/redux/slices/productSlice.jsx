@@ -10,6 +10,16 @@ const productSlice = createSlice({
       const { category, data } = actions.payload;
       state[category] = data;
     },
+
+    // All the admin Parts
+    // setUpdateProduct: (state, actions) => {
+    //   const { category, data, dataToAdd } = actions.payload;
+    //   state[category] += data;
+    // },
+    // setDeleteProduct: (state, actions) => {
+    //   const { category, data, id } = actions.payload;
+    //   state[category].filter((_, id) => id !== id);
+    // },
   },
 });
 

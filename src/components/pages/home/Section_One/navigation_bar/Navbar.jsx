@@ -33,7 +33,8 @@ const Navbar = () => {
     <>
       <div className="flex ">
         <img
-          src="images/Logo.png"
+          src="/images/Logo.png"
+          // src={`images/Logo.png` || ``}
           alt="logo"
           className="w-[5.1vw] h-[10.4vh] "
         />

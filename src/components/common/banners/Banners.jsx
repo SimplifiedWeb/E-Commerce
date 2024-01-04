@@ -7,7 +7,7 @@ const Banners = ({ imagePath }) => {
         <img
           src={`/images/${imagePath}.png`}
           alt={`${imagePath}`}
-          className="object-contain hover:scale-[0.95] "
+          className="object-contain hover:scale-[0.99] "
           title="go on product"
         />
       </div>

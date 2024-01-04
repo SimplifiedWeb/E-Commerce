@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Loading from "./components/common/spinner/Loading";
 import AuthProvider from "./components/pages/auth/authContext/AuthContext";
 import Protected_Auth_Route from "./components/pages/auth/protected-auth-route/Protected_Auth_Route";
+const LazyGettingDataFromFirebase = lazy(() =>
+  import("./components/services/GettingDataFromFirebase")
+);
 
 const Home = lazy(() => import("./components/pages/home/Home"));
 const AboutParent = lazy(() =>
@@ -32,24 +35,31 @@ const SingleProductDetailsParent = lazy(() =>
   )
 );
 const Layout = lazy(() => import("./components/router/shared/Layout"));
+const DynamicPages = lazy(() =>
+  import("./components/categories_pages/ShowingDynamicCategoryPage")
+);
 
 const App = () => {
   return (
     <Router>
-      <AuthProvider>
-        <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading />}>
+        <AuthProvider>
+          <LazyGettingDataFromFirebase />
           <Routes>
             <Route index element={<Home />} />
             <Route
               path="/" // Change 'index' to 'path'
               element={<Layout />}
             >
-              {/* Nested Routes */}
               <Route path="/about" element={<AboutParent />} />
               <Route path="/login" element={<Login />} />
               <Route path="/logout" element={<Logout />} />
               <Route path="/register" element={<Register />} />
               <Route path="/contact" element={<ContactParent />} />
+              <Route
+                path="/category/:categoryName"
+                element={<DynamicPages />}
+              />
               <Route
                 path="/wishList"
                 element={
@@ -78,8 +88,8 @@ const App = () => {
               <Route path="/single" element={<SingleProductDetailsParent />} />
             </Route>
           </Routes>
-        </Suspense>
-      </AuthProvider>
+        </AuthProvider>
+      </Suspense>
     </Router>
   );
 };

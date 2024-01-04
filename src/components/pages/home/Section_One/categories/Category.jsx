@@ -1,9 +1,11 @@
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const Category = () => {
   const [showOptionsForElectronics, setShowOptionsForElectronics] =
     useState(false);
   const [showOptionsForClothes, setShowOptionsForClothes] = useState(false);
+
   const handleCategoryButtons = (category) => {
     if (category === "Electronics") {
       setShowOptionsForElectronics(!showOptionsForElectronics);
@@ -36,10 +38,17 @@ const Category = () => {
           />
         </li>
         {showOptionsForElectronics && (
-          <ul className="options w-3/4 px-2 mt-[-7px]">
-            <li>Mobile</li>
-            <li>Computers</li>
-            <li>Other</li>
+          <ul className="options">
+            <Link to="/category/smartphones">
+              <button className="hover:bg-slate-100 w-[200px]">
+                <li className="p-2  text-left   ">Mobile</li>
+              </button>
+            </Link>
+            <Link to="/category/computerTech">
+              <button className="hover:bg-slate-100 w-[200px]">
+                <li className="p-2  text-left   ">Computer</li>
+              </button>
+            </Link>
           </ul>
         )}
         <li
@@ -58,33 +67,54 @@ const Category = () => {
           />
         </li>
         {showOptionsForClothes && (
-          <ul className="options w-3/4 px-2 mt-[-7px] ">
-            <li>Men</li>
-            <li>Women</li>
-            <li>Other</li>
+          <ul className="options ">
+            <Link to="/category/menClothing">
+              <button className="hover:bg-slate-100 w-[200px]">
+                <li className="p-2  text-left   ">Mens</li>
+              </button>
+            </Link>
+            <Link to="/category/womenClothing">
+              <button className="hover:bg-slate-100 w-[200px]">
+                <li className="p-2  text-left   ">Womans</li>
+              </button>
+            </Link>
           </ul>
         )}
-        <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
-          <button>Home interior</button>
-        </li>
-        <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
-          <button>Computer and tech</button>
-        </li>
-        <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
-          <button>Tools, equipments</button>
-        </li>
-        <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
-          <button>Sports and outdoor</button>
-        </li>
-        <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
-          <button>Animals and pets</button>
-        </li>
-        <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
-          <button>Machinery tools</button>
-        </li>
-        <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
-          <button>Other products</button>
-        </li>
+        <Link to="/category/homeInterior">
+          <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+            <button>Home interior</button>
+          </li>
+        </Link>
+        <Link to="/category/computerTech">
+          <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+            <button>Computer and Tech</button>
+          </li>
+        </Link>
+        <Link to="/category/toolsEquipment">
+          <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+            <button>Tools and Equipments</button>
+          </li>
+        </Link>
+        <Link to="/category/sportsOutdoors">
+          <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+            <button>Sports and Outdoor</button>
+          </li>
+        </Link>
+        <Link to="/category/animalsPets">
+          <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+            <button>Animals and Pets</button>
+          </li>
+        </Link>
+        <Link to="/category/machineryTools">
+          <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+            <button>Machinery tools</button>
+          </li>
+        </Link>
+        <Link to="/category/otherProducts">
+          <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+            <button>Other products</button>
+          </li>
+        </Link>
       </ul>
     </>
   );

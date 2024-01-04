@@ -1,4 +1,3 @@
-import React from "react";
 import PhoneAndroidOutlinedIcon from "@mui/icons-material/PhoneAndroidOutlined";
 import ComputerOutlinedIcon from "@mui/icons-material/ComputerOutlined";
 import WatchOutlinedIcon from "@mui/icons-material/WatchOutlined";
@@ -8,11 +7,12 @@ import SportsEsportsOutlinedIcon from "@mui/icons-material/SportsEsportsOutlined
 import CheckroomOutlinedIcon from "@mui/icons-material/CheckroomOutlined";
 import ConstructionOutlinedIcon from "@mui/icons-material/ConstructionOutlined";
 
+// eslint-disable-next-line react/prop-types
 const Category_Cards = () => {
   return (
-    <div>
-      <div className="cards mt-[45px] flex flex-wrap gap-4 justify-center items-center ">
-        <div className="icon-box">
+    <>
+      <div className="flex w-full h-full  justify-between items-center flex-wrap ">
+        <div className="icon-box ">
           <PhoneAndroidOutlinedIcon className="icon" />
           <div className="icon-name">Phone</div>
         </div>
@@ -45,9 +45,7 @@ const Category_Cards = () => {
           <div className="icon-name">Construction</div>
         </div>
       </div>
-
-      <div className="line h-[0.2px] bg-gray-500 w-full mt-[6%]"></div>
-    </div>
+    </>
   );
 };
 

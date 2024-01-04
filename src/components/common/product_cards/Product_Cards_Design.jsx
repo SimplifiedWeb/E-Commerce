@@ -11,6 +11,7 @@ const Product_Cards_Design = ({
   product_name,
   rating,
   flexWrap,
+  mainList,
 }) => {
   const [isHover, setIsHover] = useState(false);
 
@@ -24,8 +25,9 @@ const Product_Cards_Design = ({
   return (
     <>
       <div
-        className={`main-card mx-2 w-[400px] rounded-lg p-[4px] pt-[1px] h-[315px] cursor-pointer bg-[#fff]  border-[0.1px] border-gray-900 border-opacity-10 border-b-2 
-        ${flexWrap ? " lg:w-[250px] mt-3 " : ""}
+        className={`main-card mx-2  rounded-lg p-[4px] pt-[1px] h-[315px] cursor-pointer bg-[#fff]  border-[0.1px] border-gray-900 border-opacity-10 border-b-2 
+        
+        ${mainList ? "w-[300px]" : "w-[400px]"}
         `}
         style={{
           boxShadow:
@@ -41,6 +43,7 @@ const Product_Cards_Design = ({
           <div className="image-container w-[250px] ">
             <img
               src={image}
+              loading="lazy"
               alt={product_name}
               className="object-contain mix-blend-multiply w-[300px] h-[210px]"
               style={{ width: "300px" }}
@@ -90,7 +93,7 @@ const Product_Cards_Design = ({
             </span>
           </div>
           <div className="ratings ml-[2px]">
-            <Rating rating={rating} />
+            <Rating rating={rating + ""} />
           </div>
         </div>
       </div>

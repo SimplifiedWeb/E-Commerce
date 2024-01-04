@@ -1,9 +1,10 @@
-import { useState, useEffect, useMemo } from "react";
-import { data } from "../../../../../Data/data_for_Slider";
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { data } from "../../../../../data_for_Slider";
 
 const Slider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTextVisible, setIsTextVisible] = useState(false);
+  const memoizedData = useMemo(() => data, []);
 
   const images = useMemo(
     () => [
@@ -16,21 +17,19 @@ const Slider = () => {
     []
   );
 
-  const handleProgress = (index) => {
+  const handleProgress = useCallback((index) => {
     setActiveIndex(index);
-  };
+  }, []);
 
   useEffect(() => {
     setIsTextVisible(true);
 
     const intervalId = setInterval(() => {
       setIsTextVisible(false);
-      // browser don't have enough time to process the transition
-      setTimeout(() => {
-        setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
-        setIsTextVisible(true);
-      }, 350);
-    }, 3000);
+      setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setIsTextVisible(true);
+    }, 4200); // Adjust the interval time as needed
+
     return () => clearInterval(intervalId);
   }, [images]);
 
@@ -42,6 +41,7 @@ const Slider = () => {
             <img
               key={index}
               src={image}
+              loading="lazy"
               alt={`slide-${index}`}
               className={`w-full h-full object-contain absolute transition-transform ease-in-out duration-1000 transform ${
                 activeIndex === index ? "translate-x-0" : "-translate-x-full"
@@ -51,7 +51,7 @@ const Slider = () => {
         </div>
 
         <div className="texts absolute top-0 left-0 w-1/2 h-full flex flex-col justify-center text-black p-8 rounded-lg">
-          {data.map((currElm, index) => (
+          {memoizedData.map((currElm, index) => (
             <div
               key={index}
               className={`transition-opacity duration-500 mt-[-8px] ${
@@ -90,7 +90,7 @@ const Slider = () => {
         </div>
 
         <div className="right-texts absolute top-0 right-0 w-[35%] h-full flex flex-col justify-center text-black p-8 rounded-lg">
-          {data.map((currElm, index) => (
+          {memoizedData.map((currElm, index) => (
             <div
               key={index}
               className={`transition-opacity duration-500 ease-in-out ${
@@ -106,9 +106,9 @@ const Slider = () => {
                     }`}
                     style={{
                       transition: "opacity 0.5s ease-in-out",
-                      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Add a subtle box-shadow
-                      padding: "6px", // Add some padding for better spacing
-                      borderRadius: "8px", // Add rounded corners
+                      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                      padding: "6px",
+                      borderRadius: "8px",
                     }}
                   >
                     {feature}

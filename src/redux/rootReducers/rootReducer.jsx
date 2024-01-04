@@ -1,7 +1,13 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import productSlice from "../slices/productSlice";
+import allProducts from "../slices/allProducts";
+import arrowSlice from "../slices/arrowSlice";
+import sortingSlice from "../slices/sortingSlice";
+// import productSlice from "../slices/productSlice";
 
 const rootReducer = combineReducers({
-  productSlice: productSlice,
+  // productSlice: productSlice,
+  allProducts: allProducts,
+  arrowSlice: arrowSlice,
+  sortingSlice: sortingSlice,
 });
 export default rootReducer;

@@ -16,7 +16,7 @@ const Related_Product = () => {
           />
         </div>
         <div className="content  overflow-hidden ">
-          <Product_Cards category={"random_products"} />
+          <Product_Cards category={"randomProducts"} />
         </div>
         <div className="banner mt-8 relative flex flex-wrap justify-between items-center p-5">
           {/* Image as background */}
