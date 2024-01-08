@@ -4,13 +4,20 @@ import PriceRange from "./PriceRange";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import UseCategoryAndFiltering from "../../../hooks/useCategoryAndFiltering/UseCategoryAndFiltering";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+// import { useEffect } from "react";
 const Filtering = ({ store }) => {
-  const [filterOptions, setFilterOptions] = useState();
-  const { filter_Data } = UseCategoryAndFiltering(store, filterOptions);
   const { showElement, handleShowElement } = UseShowAndHideElements();
+  const [filterOptions, setFilterOptions] = useState(null);
+  const allProducts = useSelector((state) => state.allProducts.store);
+
+  const {} = UseCategoryAndFiltering({
+    store,
+    selectedOptions: filterOptions,
+  });
+
   const onFilterChange = (selectedName, index, category) => {
-    const data = { selectedName, index, category };
-    setFilterOptions(data);
+    setFilterOptions({ selectedName, index, category });
   };
 
   if (!store || store.length === 0) {
@@ -136,7 +143,7 @@ const Filtering = ({ store }) => {
       </div>
 
       <div className="price-range">
-        <PriceRange />
+        <PriceRange store={store} />
       </div>
     </div>
   );

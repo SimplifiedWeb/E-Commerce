@@ -1,7 +1,6 @@
 import { useCallback } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
   setAscending,
@@ -14,7 +13,7 @@ const UseSorting = ({ data }) => {
   const dispatch = useDispatch();
   //   const [sorted, setSorting] = useState([]);
   const [sortingName, setSortingName] = useState("");
-  const sortedData = useSelector((state) => state.sortingSlice.sort_store);
+  // const sortedData = useSelector((state) => state.sortingSlice.sort_store);
 
   useEffect(() => {
     switch (sortingName) {
@@ -53,7 +52,7 @@ const UseSorting = ({ data }) => {
     [setSortingName]
   );
 
-  return { handleSort, sortedData };
+  return { handleSort };
 };
 
 export default UseSorting;

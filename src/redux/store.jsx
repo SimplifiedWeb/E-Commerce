@@ -3,6 +3,7 @@ import rootReducer from "./rootReducers/rootReducer";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { storeTransform } from "./slices/allProducts";
+// import { cartTransform } from "./slices/addToCartSlice";
 
 // Configure Redux Persist
 const persistConfig = {
@@ -11,6 +12,7 @@ const persistConfig = {
   transforms: [storeTransform], // only persist the specified reducers
   version: 1,
 };
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({

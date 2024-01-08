@@ -3,8 +3,8 @@ import { createTransform } from "redux-persist";
 const initialState = {
   store: [],
   randomData: [],
-  filterData: [],
-  sortingData: [],
+  paginatedStore: [],
+  storeSortedPaginatedData: [],
 };
 
 export const storeTransform = createTransform(
@@ -22,7 +22,12 @@ const allProduct = createSlice({
     getAllProduct: (state, action) => {
       state.store = action.payload;
     },
-
+    storePaginatedData: (state, action) => {
+      state.paginatedStore = action.payload;
+    },
+    storeSortedPaginatedData: (state, action) => {
+      state.storeSortedPaginatedData = action.payload;
+    },
     getRandomData: (state) => {
       // Use map to create a new array with the random items
       state.randomData = state.store.map((item) => {
@@ -40,5 +45,10 @@ const allProduct = createSlice({
   },
 });
 
-export const { getAllProduct, getRandomData } = allProduct.actions;
+export const {
+  getAllProduct,
+  getRandomData,
+  storePaginatedData,
+  storeSortedPaginatedData,
+} = allProduct.actions;
 export default allProduct.reducer;

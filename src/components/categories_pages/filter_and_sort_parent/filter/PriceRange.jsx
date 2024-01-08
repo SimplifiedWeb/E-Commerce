@@ -1,19 +1,25 @@
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useState } from "react";
-const PriceRange = () => {
-  const [range, setRange] = useState([0, 50000]); // Initial range
+import { useDispatch } from "react-redux";
+import { filterPriceRange } from "../../../../redux/slices/filterSlice";
+const PriceRange = ({ store }) => {
+  const dispatch = useDispatch();
+  const [range, setRange] = useState([0, 149999]); // Initial range
 
   const handleSliderChange = (value) => {
     setRange(value);
   };
 
   const handleApplyClick = () => {
-    // Handle the apply button click
-    console.log("Applied Range:", range);
+    dispatch(filterPriceRange({ range, store }));
   };
+  if (!store || store.length === 0) {
+    return null;
+  }
+
   return (
-    <div className="main-price-range-content bg-gray-100  rounded-lg w-[100%]">
+    <div className="main-price-range-content bg-gray-100  rounded-lg w-[100%] py-5">
       <h2 className="text-lg font-bold mb-4">Price Range</h2>
 
       {/* Slider */}
@@ -21,7 +27,9 @@ const PriceRange = () => {
         <Slider
           range
           min={0}
-          max={50000}
+          max={149999}
+          step={10000} // Set your desired step value
+          dots
           value={range}
           onChange={handleSliderChange}
         />
@@ -46,7 +54,10 @@ const PriceRange = () => {
       </div>
 
       {/* Apply Button */}
-      <button className="btn-apply" onClick={handleApplyClick}>
+      <button
+        className="btn-apply text-[13.6px] bg-blue-500 text-white px-3 py-1 rounded-full hover:bg-blue-600"
+        onClick={handleApplyClick}
+      >
         Apply
       </button>
     </div>

@@ -4,9 +4,17 @@ import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined
 import { Link } from "react-router-dom";
 import UseShowAndHideElements from "../../../hooks/useShowAndHide/UseShowAndHideElements";
 import UseSorting from "../../../hooks/useSorting/UseSorting";
+import { useDispatch } from "react-redux";
+import { resetFilters } from "../../../../redux/slices/filterSlice";
 const Sorting = ({ store }) => {
+  const dispatch = useDispatch();
   const { showElement, handleShowElement } = UseShowAndHideElements();
   const { handleSort } = UseSorting({ data: store });
+  const handleReset = () => {
+    setTimeout(() => {
+      dispatch(resetFilters());
+    }, 100);
+  };
   return (
     <div className="main-sorting-content bg-gray-100 p-4 rounded-lg shadow-md w-[100%]">
       <h2 className="text-lg font-bold mb-4">Sort By</h2>
@@ -77,47 +85,91 @@ const Sorting = ({ store }) => {
         {showElement.relatedCategory ? (
           <ul className="pb-3">
             <Link to="/category/homeInterior">
-              <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+              <li
+                className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]"
+                onClick={handleReset}
+              >
                 <button>Home interior</button>
               </li>
             </Link>
             <Link to="/category/smartphones">
-              <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+              <li
+                className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]"
+                onClick={handleReset}
+              >
                 <button>Mobiles</button>
               </li>
             </Link>
             <Link to="/category/electronics">
-              <li className="hover:bgk-gray-200 p-1 rounded cursor-pointer w-[230px]">
+              <li
+                className="hover:bgk-gray-200 p-1 rounded cursor-pointer w-[230px]"
+                onClick={handleReset}
+              >
                 <button>Electronics</button>
               </li>
             </Link>
             <Link to="/category/computerTech">
-              <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+              <li
+                className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]"
+                onClick={handleReset}
+              >
                 <button>Computer and Tech</button>
               </li>
             </Link>
             <Link to="/category/toolsEquipment">
-              <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+              <li
+                className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]"
+                onClick={handleReset}
+              >
                 <button>Tools and Equipments</button>
               </li>
             </Link>
             <Link to="/category/sportsOutdoors">
-              <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+              <li
+                className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]"
+                onClick={handleReset}
+              >
                 <button>Sports and Outdoor</button>
               </li>
             </Link>
+            <Link to="/category/menClothing">
+              <li
+                className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]"
+                onClick={handleReset}
+              >
+                <button>Mens Clothing</button>
+              </li>
+            </Link>
+            <Link to="/category/womenClothing">
+              <li
+                className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]"
+                onClick={handleReset}
+              >
+                <button>Women Clothing</button>
+              </li>
+            </Link>
+
             <Link to="/category/animalsPets">
-              <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+              <li
+                className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]"
+                onClick={handleReset}
+              >
                 <button>Animals and Pets</button>
               </li>
             </Link>
             <Link to="/category/machineryTools">
-              <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+              <li
+                className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]"
+                onClick={handleReset}
+              >
                 <button>Machinery tools</button>
               </li>
             </Link>
             <Link to="/category/otherProducts">
-              <li className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]">
+              <li
+                className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px]"
+                onClick={handleReset}
+              >
                 <button>Other products</button>
               </li>
             </Link>

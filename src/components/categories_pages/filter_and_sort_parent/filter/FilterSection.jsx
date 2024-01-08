@@ -1,7 +1,13 @@
+import { useSelector } from "react-redux";
+
 const FilterSection = ({ categoryType, store, onFilterChange }) => {
   const uniqueValues = [
     ...new Set(store.map((currElm) => currElm[categoryType])),
   ];
+
+  const filterOptions = useSelector(
+    (state) => state.filterSlice.allFilterOptions
+  );
 
   return (
     <div className="mb-4">
@@ -12,6 +18,7 @@ const FilterSection = ({ categoryType, store, onFilterChange }) => {
               <input
                 type="checkbox"
                 className="form-checkbox text-blue-500"
+                checked={filterOptions?.includes(currElm)}
                 onChange={() => onFilterChange(currElm, index, categoryType)}
               />
               <span className="ml-2 text-sm">{currElm}</span>
