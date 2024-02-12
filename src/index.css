@@ -45,9 +45,10 @@ body {
     /* Add a bottom border to separate categories */
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 600px) {
     .icon-box {
         width: calc(50% - 20px);
+
         /* Display two categories side by side with margin in between */
         margin-right: 20px;
         border-bottom: none;

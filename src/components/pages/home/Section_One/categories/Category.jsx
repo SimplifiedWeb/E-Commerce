@@ -36,7 +36,7 @@ const Category = () => {
       ></div>
 
       <ul
-        className="categories flex flex-col gap-3 p-4 pl-6 items-start"
+        className="categories flex flex-col gap-3 p-4 pl-6 sm:pl-3 items-start"
         // style={{ clipPath: "polygon(100% 0, 0 100%, 100% 100%)" }}
       >
         <li
