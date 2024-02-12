@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 
 const Time = ({ check }) => {
   const calculateTimeLeft = () => {
-    const targetDate = new Date("2024-02-23T23:59:59");
-    // Set your target date in the correct format
-    const now = new Date();
-    const difference = targetDate - now;
+    const currentDate = new Date();
+    const targetDate = new Date(currentDate);
+    targetDate.setDate(targetDate.getDate() + 30); // Add 30 days to the current date
+    targetDate.setHours(23, 59, 59, 999); // Set the time to 23:59:59.999 on the target date
+
+    const difference = targetDate - currentDate;
 
     if (difference > 0) {
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -33,6 +35,9 @@ const Time = ({ check }) => {
       const updatedTimeLeft = calculateTimeLeft();
       if (updatedTimeLeft) {
         setTimeLeft(updatedTimeLeft);
+      } else {
+        // Reset the timer to the next 30 days
+        setTimeLeft(calculateTimeLeft());
       }
     }, 1000);
 
