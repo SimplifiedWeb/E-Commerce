@@ -16,12 +16,6 @@ const Login = () => {
       const { email, password } = values;
       await login(email, password);
       navigate("/");
-      // const data = await signInWithEmailAndPassword(
-      //   auth,
-      //   values.email,
-      //   values.password
-      // );
-      // console.log("Success log in", data);
     } catch (error) {
       console.log("Credential are wrong");
     }
@@ -34,15 +28,15 @@ const Login = () => {
 
   return (
     <>
-      <div className="login min-h-[100vh] flex flex-wrap relative">
-        <div className="left flex-1">
+      <div className="login min-h-[100vh] flex flex-wrap relative sm:min-h-[60vh] overflow-hidden">
+        <div className="left flex-1 sm:hidden">
           <img
             src="/images/auth/auth.png"
             alt="auth-image"
             className="w-[720px] h-[65  0px] absolute left-[-10%] top-[5%]"
           />
         </div>
-        <div className="right flex-2 flex flex-col gap-5 justify-center items-center absolute top-[22%] left-[57%]">
+        <div className="right flex-2 flex flex-col gap-5 justify-center items-center absolute top-[22%] left-[57%] sm:top-[22%] sm:left-[5%]">
           <div className="form  p-2  flex flex-wrap flex-col gap-7 justify-center items-center  w-[350px] ">
             <div className="first-section w-full flex flex-col mb-[-15px] gap-4">
               <h1 className="text-3xl tracking-wider ">Log in to Exclusive</h1>

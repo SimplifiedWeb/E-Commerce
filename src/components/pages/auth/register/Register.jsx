@@ -5,11 +5,22 @@ import { getAuth } from "../authContext/AuthContext";
 import { useNavigate } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
+  const { googleSignIn } = getAuth();
   const initialValue = {
     fullName: "",
     email: "",
     password: "",
   };
+
+  const handleGoogleAuth = async () => {
+    try {
+      await googleSignIn();
+      // navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const { register } = getAuth();
   const onSubmit = async (values) => {
     const { email, password } = values;
@@ -29,15 +40,15 @@ const Register = () => {
 
   return (
     <>
-      <div className="register min-h-[100vh] flex flex-wrap relative">
-        <div className="left flex-1">
+      <div className="register min-h-[100vh] sm:min-h-[75vh] flex  flex-wrap relative">
+        <div className="left flex-1 sm:hidden">
           <img
             src="/images/auth/auth.png"
             alt="auth-image"
             className="w-[720px] h-[650px] absolute left-[-10%] top-[5%]"
           />
         </div>
-        <div className="right flex-2 flex flex-col gap-5 justify-center items-center absolute top-[8%] left-[57%]">
+        <div className="right flex-2 flex  flex-col gap-5 justify-center items-center absolute top-[8%] left-[57%] sm:top-[18%] sm:left-[5%]">
           <div className="form  p-2  flex flex-wrap flex-col gap-5 justify-center items-center  w-[350px]">
             <div className="first-section w-full flex flex-col gap-4">
               <h1 className="text-3xl tracking-wider ">Create an account</h1>
@@ -77,7 +88,10 @@ const Register = () => {
               >
                 Create an Account
               </button>
-              <button className="bg-inherit w-full p-1 mt-4 px-3 border-[1.3px] border-gray-400 flex justify-center items-center gap-2 hover:bg-gray-200">
+              <button
+                onClick={handleGoogleAuth}
+                className="bg-inherit w-full p-1 mt-4 px-3 border-[1.3px] border-gray-400 flex justify-center items-center gap-2 hover:bg-gray-200"
+              >
                 <span>
                   <img
                     src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"

@@ -10,6 +10,7 @@ const persistConfig = {
   key: "root", // key for the localStorage entry
   storage, // use the specified storage engine
   transforms: [storeTransform], // only persist the specified reducers
+
   version: 1,
 };
 

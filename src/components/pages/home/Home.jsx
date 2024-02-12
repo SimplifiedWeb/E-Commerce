@@ -15,6 +15,9 @@ import Categories_Parent from "../home/Section_Three/category_parent_section/Cat
 import Todays_Home from "../home/Section_Two/Todays_Parent_Section/Todays_Home";
 import Loading from "../../common/spinner/Loading";
 import { ErrorBoundary } from "react-error-boundary";
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// import { storeAddToCart } from "../../../redux/slices/addToCartSlice";
 const LazySlider = lazy(() => import("../home/Section_One/slider/Slider"));
 // import { useSelector } from "react-redux";
 
@@ -30,15 +33,15 @@ const Home = () => {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => {}}>
       <>
-        <div className="main min-h-screen min-h-[svh] pt-8 px-28  relative">
+        <div className="main min-h-screen min-h-[svh] pt-8 lg:px-28 overflow-hidden 2xl:px-28 sm:px-0 md:px-0  relative">
           <div className="top_ads_bar absolute top-0 left-0 w-[100%]">
             <Top_Add_Bar />
           </div>
-          <div className="navbar h-20 w-full pt-2 mb-6 z-3 ">
+          <div className="navbar h-20 w-full pt-2 mb-6 z-30 sm:h-[175px]">
             <Navbar />
           </div>
           <div
-            className="hero-section border-2 pr-5 pt-4   flex"
+            className="hero-section border-2 pr-5 pt-4   flex sm:flex-col"
             style={{
               boxShadow:
                 "rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset",
@@ -46,15 +49,15 @@ const Home = () => {
             }}
             // bg-[#f2f0ea]
           >
-            <div className="left w-[280px]">
+            <div className="left w-[280px] ">
               <Category />
             </div>
-            <div className="middle flex-1">
+            <div className="middle flex-1  ">
               <Suspense fallback={<Loading />}>
                 <LazySlider />
               </Suspense>
             </div>
-            <div className="right flex-2 ">
+            <div className="right flex-2 sm:hidden ">
               <S_Cards />
             </div>
           </div>

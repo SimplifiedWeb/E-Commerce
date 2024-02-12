@@ -1,14 +1,9 @@
-// import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
-// import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
-// import TwitterIcon from "@mui/icons-material/Twitter";
-// import InstagramIcon from "@mui/icons-material/Instagram";
-// import FacebookOutlined from "@mui/icons-material/FacebookOutlined";
 const Footer = () => {
   return (
     <>
       <footer className="bg-black">
         <div className="mx-auto w-full max-w-screen-xl">
-          <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+          <div className="grid grid-cols-4 gap-8 px-4 sm:grid-cols-2 py-6 lg:py-8 md:grid-cols-4">
             <div>
               <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
                 Company
@@ -173,7 +168,7 @@ const Footer = () => {
                 <span className="sr-only">Twitter page</span>
               </a>
               <a
-                href="#"
+                href="https://github.com/SimplifiedWeb?tab=repositories"
                 className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
               >
                 <svg
@@ -189,6 +184,7 @@ const Footer = () => {
                     clipRule="evenodd"
                   />
                 </svg>
+
                 <span className="sr-only">GitHub account</span>
               </a>
               <a

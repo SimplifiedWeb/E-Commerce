@@ -18,7 +18,7 @@ const Related_Product = () => {
         <div className="content  overflow-hidden ">
           <Product_Cards category={"randomProducts"} />
         </div>
-        <div className="banner mt-8 relative flex flex-wrap justify-between items-center p-5">
+        <div className="banner mt-1 mb-8 relative flex flex-wrap justify-between items-center p-5">
           {/* Image as background */}
           <div
             className="absolute inset-0 bg-contain blur-[5px] bg-center z-[-1]"

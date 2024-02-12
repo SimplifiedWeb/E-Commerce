@@ -31,28 +31,52 @@ body {
 
 
 
-
 .icon-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 250px;
-    height: auto;
+    width: 100%;
+    /* Take full width initially */
     padding: 15px;
-    /* border: 0.7px solid black; */
-    margin: 0px;
+    margin-bottom: 20px;
+    /* Add margin between items */
     text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    /* Add a bottom border to separate categories */
 }
 
-.icon-box:nth-child(1),
-.icon-box:nth-child(2),
-.icon-box:nth-child(3),
-.icon-box:nth-child(5),
-.icon-box:nth-child(6),
-.icon-box:nth-child(7) {
-    border-right: 0.7px solid rgba(0, 0, 0, 0.324);
-    padding-right: 10px;
+@media screen and (min-width: 600px) {
+    .icon-box {
+        width: calc(50% - 20px);
+        /* Display two categories side by side with margin in between */
+        margin-right: 20px;
+        border-bottom: none;
+        /* Remove bottom border for larger screens */
+    }
 }
+
+@media screen and (min-width: 1024px) {
+    .category-card {
+        flex-wrap: wrap;
+        /* Prevent wrapping */
+        justify-content: space-between;
+        /* Distribute items evenly */
+    }
+
+    .icon-box {
+        width: 250px;
+        /* Adjust width for five categories in a row */
+        margin-right: 20px;
+        /* Add margin between categories */
+    }
+
+    .icon-box:last-child {
+        margin-right: 0;
+        /* Remove margin for the last category */
+    }
+}
+
+
 
 .icon-box:hover {
     background-color: #db4444;
@@ -61,6 +85,7 @@ body {
     font-weight: bold;
     transition: all 100ms ease-in;
 }
+
 
 .service-card {
     display: flex;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   storePaginatedData,
   storeSortedPaginatedData,
@@ -16,6 +16,7 @@ import Filter_Sort_Parent from "./filter_and_sort_parent/Filter_Sort_Parent";
 const ShowingDynamicCategoryPage = () => {
   const { categoryName } = useParams();
   const { getStore } = ProductsHook(categoryName);
+  const [showFilterTab, setShowFilterTab] = useState(false);
   const sortedData = useSelector((state) => state.sortingSlice.sort_store);
 
   const [isPaginatedData, setIsPaginatedData] = useState([]);
@@ -48,27 +49,46 @@ const ShowingDynamicCategoryPage = () => {
     dispatch(storeSortedPaginatedData(paginatedSortedData));
   }, [currentPage, getStore, dispatch, sortedData]);
 
+  const handleFilterTab = () => {
+    setShowFilterTab(!showFilterTab);
+  };
+
   return (
-    <div className="dynamicCategory min-h-screen relative flex flex-col">
-      <div className="route flex gap-2 absolute top-4 left-0">
-        <span className="text-[#868686]">Home</span>
+    <div className="dynamicCategory min-h-screen relative flex flex-col sm:mt-[25%] ">
+      <div className="route flex gap-2 absolute top-4 left-0 sm:ml-[5%]">
+        <Link to="/">
+          <span className="text-[#868686]">Home</span>
+        </Link>
         <span className="text-[#868686]">/</span>
-        <span className="text-[#868686]">Category</span>
+        <Link to={`/category/${categoryName}`}>
+          <span className="text-[#868686]">Category</span>
+        </Link>
         <span className="text-[#868686]">/</span>
         <span>{categoryName}</span>
       </div>
 
-      <div className="main-content flex-1 flex justify-between relative p-5 mt-[3%] ml-[-5%]">
-        <div className="left flex flex-col justify-start items-start gap-1 ">
-          <Filter_Sort_Parent store={getStore} />
+      <div className="main-content flex-1  flex justify-between relative p-5 mt-[3%] ml-[-5%] sm:mt-[10%]">
+        <div
+          className={`left flex flex-col justify-start items-start gap-1  ${
+            showFilterTab
+              ? "sm:block md:block  sm:absolute sm:top-16 sm:transition-all  sm:left-3 sm:z-[9999]"
+              : "sm:hidden md:hidden"
+          } `}
+        >
+          <Filter_Sort_Parent
+            store={getStore}
+            handleFilterTab={handleFilterTab}
+          />
         </div>
-        <div className="right w-[1100px] 0  mr-[-5%] ">
+        <div className="right w-[1100px] 0   mr-[-5%] ">
           <All_Products_Based_On_Category
             store={isPaginatedData}
             category={categoryName}
+            handleFilterTab={handleFilterTab}
           />
         </div>
       </div>
+
       <div className="pagination-section flex justify-end items-center p-5">
         <nav aria-label="Page navigation example">
           <ul className="inline-flex -space-x-px text-md ">

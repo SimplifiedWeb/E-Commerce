@@ -20,8 +20,25 @@ const Category = () => {
   };
 
   return (
-    <>
-      <ul className="categories flex flex-col gap-3 p-4 pl-6 items-start">
+    <div className="relative">
+      {/* clip-path: polygon(100% 0, 0 100%, 100% 100%); */}
+      <div
+        className="clip-path-background-mobile sm:block md:hidden 2xl:hidden lg:hidden absolute inset-0 bg-your_color_here"
+        style={{
+          clipPath: "polygon(130% 100%, 10% 100%, 30% 30%)",
+          zIndex: -1, // Move the background behind the list
+          backgroundColor: "#f56e6e",
+          position: "absolute",
+          right: -110,
+          top: 0,
+          overflow: "hidden",
+        }}
+      ></div>
+
+      <ul
+        className="categories flex flex-col gap-3 p-4 pl-6 items-start"
+        // style={{ clipPath: "polygon(100% 0, 0 100%, 100% 100%)" }}
+      >
         <li
           className="hover:bg-gray-200 p-1 rounded cursor-pointer w-[230px] "
           onClick={() => handleCategoryButtons("Electronics")}
@@ -116,7 +133,7 @@ const Category = () => {
           </li>
         </Link>
       </ul>
-    </>
+    </div>
   );
 };
 

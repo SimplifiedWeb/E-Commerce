@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const Time = ({ check }) => {
   const calculateTimeLeft = () => {
-    const targetDate = new Date("2024-01-23T23:59:59");
+    const targetDate = new Date("2024-02-23T23:59:59");
     // Set your target date in the correct format
     const now = new Date();
     const difference = targetDate - now;
@@ -46,7 +46,7 @@ const Time = ({ check }) => {
       ) : (
         <div className="flex flex-col flex-1">
           <div className="top-titles mt-[-4px]">
-            <ul className="flex text-[10px]">
+            <ul className="flex text-[10px] sm:ml-1">
               <li className="px-4">Days</li>
               <li className="px-4">Hours</li>
               <li className="px-4">Minutes</li>
@@ -54,8 +54,8 @@ const Time = ({ check }) => {
             </ul>
           </div>
           <div className="counts ">
-            <ul className="flex text-2xl font-extrabold">
-              <li className="px-3">{timeLeft?.days}</li>
+            <ul className="flex text-2xl sm:text-xl sm:ml-2  font-extrabold">
+              <li className="px-3 ">{timeLeft?.days}</li>
               <li>
                 <span className="text-[#cd2c2c]">:</span>
               </li>
@@ -63,7 +63,7 @@ const Time = ({ check }) => {
               <li>
                 <span className="text-[#cd2c2c]">:</span>
               </li>
-              <li className="px-3">{timeLeft?.minutes}</li>
+              <li className="px-3 sm:px-4">{timeLeft?.minutes}</li>
               <li>
                 <span className="text-[#cd2c2c]">:</span>
               </li>

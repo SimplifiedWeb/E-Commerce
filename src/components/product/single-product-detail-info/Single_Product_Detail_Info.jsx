@@ -1,56 +1,29 @@
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import { useState } from "react";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
+import { useEffect } from "react";
 
 // import {} from '..'
 
-const Single_Product_Detail_Info = () => {
-  const data = [
-    "Ultra HD Smart TV",
-    "4K Display for Stunning Visuals",
-    "Immersive Audio for Enhanced Experience",
-    "Smart Functionality for Convenience",
-    "55-Inch Size for a Cinematic Feel",
-  ];
-  const specs = [
-    {
-      details: {
-        property: "In The Box",
-        value:
-          "Handset, Charger, USB Cable, SIM Ejector Pin, Quick Start Guide",
-      },
-    },
-    {
-      os: {
-        property: "Processor Type",
-        value: "Exynos 990",
-      },
-    },
-    {
-      ram: {
-        property: "RAM",
-        value: "12 GB",
-      },
-    },
-    {
-      camera: {
-        property: "Primary Camera",
-        value: "108MP + 10x Zoom",
-      },
-    },
-    {
-      network: {
-        property: "Supported Networks",
-        value: "5G, 4G VoLTE, 4G LTE, WCDMA, GSM",
-      },
-    },
-    {
-      battery: {
-        property: "Battery Capacity",
-        value: "5000 mAh",
-      },
-    },
-  ];
+const Single_Product_Detail_Info = ({ findSpecificData }) => {
+  const {
+    current_price,
+    highlights,
+    image,
+    specs,
+    otherImages,
+    product_name,
+    category,
+    seller,
+    shipping_address,
+    quantity,
+    description,
+    discount,
+    size,
+    offers,
+    original_price,
+  } = findSpecificData;
+  const [showSpecs, setShowSpecs] = useState(false);
   const [isOpen, setIsOpen] = useState({
     desc: true,
     specs: false,
@@ -59,68 +32,83 @@ const Single_Product_Detail_Info = () => {
     seller: false,
   });
 
+  useEffect(() => {
+    if (category === "mobile") {
+      setShowSpecs(true);
+    } else {
+      setShowSpecs(false);
+    }
+  }, [category]);
+
   const handleOpen = (section) => {
-    setIsOpen((prev) => ({
-      ...Object.fromEntries(Object.keys(prev).map((key) => [key, false])),
+    // setIsOpen((prev) => ({
+    //   ...Object.fromEntries(Object.keys(prev).map((key) => [key, false])),
+    //   [section]: true,
+    // }));
+
+    setIsOpen({
+      desc: false,
+      specs: false,
+      reviews: false,
+      shipping: false,
+      seller: false,
       [section]: true,
-    }));
+    });
   };
 
   return (
     <>
-      <div className="detail-info flex justify-between items-start">
-        <div className="acc shadow-2xl p-5 w-[1200px]">
-          <div className="buttons flex gap-[70px] pt-3 ">
+      <div className="detail-info flex justify-between relative  items-start  sm:w-full sm:overflow-hidden  ">
+        <div className="acc shadow-2xl p-5 w-[1000px] sm:w-[100%]">
+          <div className="buttons sm:w-[50%] flex gap-[70px] sm:gap-3 sm:text-sm pt-3 ">
             <button
-              className={`${isOpen.desc && "bg-slate-100 p-5"}`}
+              className={`${isOpen.desc && "bg-slate-100 p-5 sm:p-2"}`}
               onClick={() => handleOpen("desc")}
             >
               Description
             </button>
+            {showSpecs && (
+              <button
+                className={`${isOpen.specs && "bg-slate-100 p-5 sm:p-2"}`}
+                onClick={() => handleOpen("specs")}
+              >
+                Specification
+              </button>
+            )}
+
             <button
-              className={`${isOpen.specs && "bg-slate-100 p-5"}`}
-              onClick={() => handleOpen("specs")}
-            >
-              Specification
-            </button>
-            <button
-              className={`${isOpen.reviews && "bg-slate-100 p-5"}`}
+              className={`${isOpen.reviews && "bg-slate-100 p-5 sm:p-2"}`}
               onClick={() => handleOpen("reviews")}
             >
               Reviews
             </button>
             <button
-              className={`${isOpen.shipping && "bg-slate-100 p-5"}`}
+              className={`${isOpen.shipping && "bg-slate-100 p-5 sm:p-2"}`}
               onClick={() => handleOpen("shipping")}
             >
               Shipping
             </button>
             <button
-              className={`${isOpen.seller && "bg-slate-100 p-5"}`}
+              className={`${isOpen.seller && "bg-slate-100 p-5 sm:p-2"}`}
               onClick={() => handleOpen("seller")}
             >
               About Seller
             </button>
           </div>
           {isOpen.desc && (
-            <div className="dataToBeShown p-4 bg-slate-100">
+            <div className="dataToBeShown sm:w-[50%] p-4 bg-slate-100">
               <span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
                 Details:
               </span>
-              <p className="p-3 tracking-wide">
-                Upgrade your entertainment experience with the Ultra HD Smart
-                TV. This TV features a stunning 4K display, smart functionality,
-                and immersive audio. Enjoy your favorite movies, shows, and
-                games in high definition with this cutting-edge television
-              </p>
+              <p className="p-3 tracking-wide">{description}</p>
               <span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
                 Features:
               </span>
-              <div className="flex gap-2 w-[700px] justify-between flex-wrap p-3">
-                {data.map((item, index) => (
+              <div className="flex gap-2 w-[700px] justify-between flex-wrap p-3 sm:flex-col">
+                {highlights?.map((item, index) => (
                   <div key={index} className="flex ">
                     {/* First Column (Check Icon) */}
-                    <div className=" pr-2">
+                    <div className=" pr-2 ">
                       <CheckOutlinedIcon
                         style={{
                           width: "16px",
@@ -131,7 +119,7 @@ const Single_Product_Detail_Info = () => {
                     </div>
 
                     {/* Second Column (Text) */}
-                    <div className="flex justify-start items-start w-[280px]">
+                    <div className="flex justify-start sm:flex-wrap items-start w-[280px] ">
                       <h3 className="">{item}</h3>
                     </div>
                   </div>
@@ -143,7 +131,7 @@ const Single_Product_Detail_Info = () => {
               </span>
               <div className="relative overflow-x-auto mt-2 ">
                 <table className="w-full text-sm  text-left table-auto bg-white border border-gray-300 dark:bg-gray-800 dark:border-gray-700">
-                  <tbody>
+                  <tbody className="sm:text-white">
                     <tr className="border-b">
                       <th
                         scope="row"
@@ -178,7 +166,7 @@ const Single_Product_Detail_Info = () => {
                       >
                         Size
                       </th>
-                      <td className="px-6 py-4">52 inches</td>
+                      <td className="px-6 py-4">{size || "Available"}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -187,7 +175,7 @@ const Single_Product_Detail_Info = () => {
           )}
 
           {isOpen.specs && (
-            <div className="specification bg-slate-100 p-4 flex justify-between items-center rounded-md overflow-hidden">
+            <div className="specification sm:w-[50%] bg-slate-100 p-4 flex justify-between items-center rounded-md overflow-hidden">
               <div className="content flex flex-col gap-3 w-[700px]">
                 {specs.length > 0 &&
                   specs.map((currElm, index) => {
@@ -215,18 +203,18 @@ const Single_Product_Detail_Info = () => {
                   })}
               </div>
               <img
-                src="/images/home_harry.png"
-                alt="harry"
-                className="w-[400px] h-[350px] object-contain"
+                src={image}
+                alt="image"
+                className="w-[400px] h-[350px] object-contain sm:hidden"
               />
             </div>
           )}
 
           {isOpen.reviews && (
-            <div className="reviews bg-slate-100 p-4 rounded-md overflow-hidden">
+            <div className="reviews bg-slate-100 p-4 rounded-md overflow-hidden sm:w-full ">
               <h2 className="text-2xl font-bold mb-4">Customer Reviews</h2>
 
-              <div className="review mb-3">
+              <div className="review mb-3 ">
                 <div className="flex items-center mb-2">
                   <div className="w-10 h-10 bg-gray-300 flex items-center justify-center rounded-full mr-3">
                     <Person2OutlinedIcon className="" />
@@ -261,12 +249,12 @@ const Single_Product_Detail_Info = () => {
           )}
 
           {isOpen.shipping && (
-            <div className="shipping-address bg-slate-100 p-4 rounded-md overflow-hidden">
+            <div className="shipping-address bg-slate-100 p-4 rounded-md overflow-hidden sm:w-full">
               <h2 className="text-2xl font-bold mb-4">Shipping Address</h2>
 
               <div className="address">
                 <p className="font-semibold mb-2">John Doe</p>
-                <p>123 Main Street</p>
+                <p> {shipping_address}</p>
                 <p>Cityville, State 12345</p>
                 <p>Country</p>
               </div>
@@ -274,81 +262,46 @@ const Single_Product_Detail_Info = () => {
           )}
 
           {isOpen.seller && (
-            <div className="seller-info bg-slate-100 p-4 rounded-md overflow-hidden">
+            <div className="seller-info bg-slate-100 p-4 rounded-md overflow-hidden sm:w-full">
               <h2 className="text-2xl font-bold mb-4">About the Seller</h2>
 
-              <div className="seller-details">
+              <div className="seller-details ">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-gray-300 flex items-center justify-center rounded-full mr-4">
                     <Person2OutlinedIcon className="" />
                   </div>
                   <div>
-                    <p className="font-semibold">Seller Name</p>
-                    <p className="text-gray-500 text-sm">Average Rating: 4.5</p>
+                    <p className="font-semibold">{seller.seller_name}</p>
+                    <p className="text-gray-500 text-sm">
+                      Average Rating: {seller.seller_rating}
+                    </p>
                   </div>
                 </div>
 
                 <p className="text-gray-700">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  {seller.seller_name} is committed to providing high-quality
+                  products and excellent service. With an average rating of{" "}
+                  {seller.seller_rating}, our customers trust us for a seamless
+                  shopping experience.
                 </p>
 
                 <p className="text-gray-700 mt-2">
                   Contact the seller:&nbsp;
-                  <a href="mailto:seller@example.com">seller@example.com</a>
+                  <a href="mailto:seller@example.com">
+                    {seller.seller_name}@gmail.com
+                  </a>
                 </p>
               </div>
             </div>
           )}
         </div>
-        <div className="randomProduct p-4 shadow-2xl">
-          <h1>You May Like</h1>
-          <div className="first-section flex gap-2 items-center border-b-2 border-gray-300 p-2   ">
-            <span className="w-[60px] h-[60px] bg-gray-300 text-2xl p-2 flex justify-center items-center ">
-              <Person2OutlinedIcon className="" />
-            </span>
-            <div className="flex flex-col">
-              <span>Mens Wallet Leather, Small, Blue color</span>
-              <span>$7.00 - $99.50</span>
-            </div>
-          </div>
-
-          <div className="first-section flex gap-2 items-center border-b-2 border-gray-300 p-2   ">
-            <span className="w-[60px] h-[60px] bg-gray-300 text-2xl p-2 flex justify-center items-center ">
-              <Person2OutlinedIcon className="" />
-            </span>
-            <div className="flex flex-col">
-              <span>Mens Wallet Leather, Small, Blue color</span>
-              <span>$7.00 - $99.50</span>
-            </div>
-          </div>
-          <div className="first-section flex gap-2 items-center border-b-2 border-gray-300 p-2   ">
-            <span className="w-[60px] h-[60px] bg-gray-300 text-2xl p-2 flex justify-center items-center ">
-              <Person2OutlinedIcon className="" />
-            </span>
-            <div className="flex flex-col">
-              <span>Mens Wallet Leather, Small, Blue color</span>
-              <span>$7.00 - $99.50</span>
-            </div>
-          </div>
-          <div className="first-section flex gap-2 items-center border-b-2 border-gray-300 p-2   ">
-            <span className="w-[60px] h-[60px] bg-gray-300 text-2xl p-2 flex justify-center items-center ">
-              <Person2OutlinedIcon className="" />
-            </span>
-            <div className="flex flex-col">
-              <span>Mens Wallet Leather, Small, Blue color</span>
-              <span>$7.00 - $99.50</span>
-            </div>
-          </div>
-          <div className="first-section flex gap-2 items-center border-b-2 border-gray-300 p-2   ">
-            <span className="w-[60px] h-[60px] bg-gray-300 text-2xl p-2 flex justify-center items-center ">
-              <Person2OutlinedIcon className="" />
-            </span>
-            <div className="flex flex-col">
-              <span>Mens Wallet Leather, Small, Blue color</span>
-              <span>$7.00 - $99.50</span>
-            </div>
-          </div>
+        <div className="randomProduct p-4 w-[38%] absolute top-5 right-[-38%] sm:hidden">
+          {/* <h1>You May Like</h1> */}
+          <img
+            src="https://plus.unsplash.com/premium_photo-1683746792239-6ce8cdd3ac78?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="something"
+            className="w-[600px] h-[600px]"
+          />
         </div>
       </div>
     </>

@@ -46,16 +46,6 @@ const Single_Product_Seller_Info = () => {
             Add to wishlist
           </button>
         </div>
-        {/* <div className="randomData  w-[300px]   bg-gray-200 border border-gray-400">
-          <h2 className="text-2xl font-bold mb-4">You may like</h2>
-          <div>
-            {Array.isArray(random) &&
-              random.map((product, index) => {
-                console.log(product);
-                return <Random_Product key={index} {...product} />;
-              })}
-          </div>
-        </div> */}
       </div>
     </>
   );

@@ -6,17 +6,17 @@ import {
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  signInWithRedirect,
   signOut,
 } from "firebase/auth";
 import { useEffect } from "react";
 import { useState } from "react";
 import { createContext, useContext } from "react";
-import { auth } from "../../../../../config/Firebase";
+import { auth, provider } from "../../../../../config/Firebase";
 
 const AuthContext = createContext();
-export const getAuth = () => {
-  return useContext(AuthContext);
-};
+
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
@@ -37,6 +37,10 @@ const AuthProvider = ({ children }) => {
     return sendPasswordResetEmail(auth, email);
   };
 
+  const googleSignIn = () => {
+    return signInWithRedirect(auth, provider);
+  };
+
   useEffect(() => {
     // each time it gonna trigger when the authentication state got changed
     const unSubscribeTheListener = auth.onAuthStateChanged((user) => {
@@ -54,9 +58,13 @@ const AuthProvider = ({ children }) => {
     login,
     logout,
     forgetPassword,
+    googleSignIn,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;
+export const getAuth = () => {
+  return useContext(AuthContext);
+};

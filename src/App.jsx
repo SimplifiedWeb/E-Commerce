@@ -1,8 +1,14 @@
 import { lazy, Suspense } from "react";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./lang/Language";
+import toast, { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Pending_Work from "./components/common/pending-works/Pending_Work";
+// import Cancel_Orders_Parent from "./components/cancel-orders/cancel_orders_parents/Cancel_Orders_Parent";
 import Loading from "./components/common/spinner/Loading";
 import AuthProvider from "./components/pages/auth/authContext/AuthContext";
 import Protected_Auth_Route from "./components/pages/auth/protected-auth-route/Protected_Auth_Route";
+import ConnectionStatus from "./components/pages/home/ConnectionStatus";
 const LazyGettingDataFromFirebase = lazy(() =>
   import("./components/services/GettingDataFromFirebase")
 );
@@ -13,6 +19,13 @@ const AboutParent = lazy(() =>
 );
 const Login = lazy(() => import("./components/pages/auth/login/Login"));
 const Logout = lazy(() => import("./components/pages/auth/logout/Logout"));
+
+const CancelOrdersParent = lazy(() =>
+  import(
+    "./components/cancel-orders/cancel_orders_parents/Cancel_Orders_Parent"
+  )
+);
+
 const Register = lazy(() =>
   import("./components/pages/auth/register/Register")
 );
@@ -39,55 +52,77 @@ const DynamicPages = lazy(() =>
   import("./components/categories_pages/ShowingDynamicCategoryPage")
 );
 
+const OrderPage = lazy(() => import("./components/order/Order_Parent"));
+
 const App = () => {
   return (
     <Router>
       <Suspense fallback={<Loading />}>
         <AuthProvider>
-          <LazyGettingDataFromFirebase />
-          <Routes>
-            <Route index element={<Home />} />
-            <Route
-              path="/" // Change 'index' to 'path'
-              element={<Layout />}
-            >
-              <Route path="/about" element={<AboutParent />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/contact" element={<ContactParent />} />
+          <I18nextProvider i18n={i18n}>
+            <ConnectionStatus />
+            <LazyGettingDataFromFirebase />
+            <Routes>
+              <Route index element={<Home />} />
               <Route
-                path="/category/:categoryName"
-                element={<DynamicPages />}
-              />
-              <Route
-                path="/wishList"
-                element={
-                  <Protected_Auth_Route>
-                    <WishListParent />
-                  </Protected_Auth_Route>
-                }
-              />
-              <Route
-                path="/cart"
-                element={
-                  <Protected_Auth_Route>
-                    <CartParent />
-                  </Protected_Auth_Route>
-                }
-              />
-              <Route
-                path="/checkout"
-                element={
-                  <Protected_Auth_Route>
-                    <CheckoutParent />
-                  </Protected_Auth_Route>
-                }
-              />
-              <Route path="/profile" element={<ProfileParent />} />
-              <Route path="/single" element={<SingleProductDetailsParent />} />
-            </Route>
-          </Routes>
+                path="/" // Change 'index' to 'path'
+                element={<Layout />}
+              >
+                <Route
+                  path="/about"
+                  element={
+                    <div className="overflow-hidden sm:px-0">
+                      <AboutParent />
+                    </div>
+                  }
+                />
+                <Route path="/cancelOrders" element={<CancelOrdersParent />} />
+
+                <Route path="/orders" element={<OrderPage />} />
+                <Route path="/reviews" element={<Pending_Work />} />
+
+                <Route path="/login" element={<Login />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/contact" element={<ContactParent />} />
+                <Route
+                  path="/product/:categoryName/:name/:categoryId"
+                  element={<SingleProductDetailsParent />}
+                />
+                <Route
+                  path="/wishList"
+                  element={
+                    <Protected_Auth_Route>
+                      <WishListParent />
+                    </Protected_Auth_Route>
+                  }
+                />
+                <Route
+                  path="/cart"
+                  element={
+                    <Protected_Auth_Route>
+                      <CartParent />
+                    </Protected_Auth_Route>
+                  }
+                />
+                <Route
+                  path="/checkout"
+                  element={
+                    <Protected_Auth_Route>
+                      <CheckoutParent />
+                    </Protected_Auth_Route>
+                  }
+                />
+                <Route path="/profile" element={<ProfileParent />} />
+                <Route
+                  path="/category/:categoryName"
+                  element={<DynamicPages />}
+                />
+                <Route path="*" element={<Pending_Work />} />
+              </Route>
+            </Routes>
+            <Toaster />
+          </I18nextProvider>
         </AuthProvider>
       </Suspense>
     </Router>

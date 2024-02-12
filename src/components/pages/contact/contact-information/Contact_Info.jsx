@@ -4,7 +4,7 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 const Contact_Info = () => {
   return (
     <>
-      <div className=" w-[300px] h-[400px] flex flex-col gap-5 p-5 ">
+      <div className=" w-[300px] h-[400px] flex flex-col gap-5 p-5 overflow-hidden  sm:mt-[-19%]">
         <div className="top-section-contact  flex flex-col gap-5 ">
           <div className="top flex gap-5 items-center ">
             <PhoneCallbackOutlinedIcon
@@ -15,6 +15,7 @@ const Contact_Info = () => {
                 fontSize: "40px",
                 color: "white",
               }}
+              className=""
             />
             <span className="font-bold ">Call To Us</span>
           </div>
@@ -22,7 +23,7 @@ const Contact_Info = () => {
             We are available 24/7, 7 days a week.
           </div>
           <div className="bottom text-[#313131] ">Phone: +919988997788</div>
-          <div className="border-line w-full h-[1px]  bg-[#313131a2] opacity-75 mb-3"></div>
+          <div className="border-line w-full h-[1px]   bg-[#313131a2] opacity-75 mb-3"></div>
         </div>
         <div className="bottom-section-contact flex flex-col gap-5">
           <div className="top flex gap-5 items-center ">

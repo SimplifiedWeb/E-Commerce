@@ -1,12 +1,12 @@
 import Filtering from "./filter/Filtering";
 import Sorting from "./sort/Sorting";
 
-const Filter_Sort_Parent = ({ store }) => {
+const Filter_Sort_Parent = ({ store, handleFilterTab }) => {
   return (
     <>
       <div className="main-filter-content w-[300px] h-auto ">
         <div className="sorting">
-          <Sorting store={store} />
+          <Sorting store={store} handleFilterTab={handleFilterTab} />
         </div>
         <div className="filtering">
           <Filtering store={store} />

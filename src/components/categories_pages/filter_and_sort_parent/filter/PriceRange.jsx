@@ -1,6 +1,7 @@
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { filterPriceRange } from "../../../../redux/slices/filterSlice";
 const PriceRange = ({ store }) => {
@@ -13,6 +14,7 @@ const PriceRange = ({ store }) => {
 
   const handleApplyClick = () => {
     dispatch(filterPriceRange({ range, store }));
+    toast.success("Applied!!!");
   };
   if (!store || store.length === 0) {
     return null;

@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {
+  removeElementsFromLocalStorage,
+  storingDataOnLocalStorage,
+} from "../../components/utils";
 
 const initialState = {
-  addToCartStore: [],
+  addToCartStore: JSON.parse(localStorage.getItem("cart-items")) || [],
 };
 
 const addToCartSlice = createSlice({
@@ -9,19 +13,54 @@ const addToCartSlice = createSlice({
   initialState,
   reducers: {
     storeAddToCart: (state, action) => {
-      const itemToAdd = action.payload;
+      const newItem = action.payload;
 
-      // Check if the item is not already in the cart
-      if (!state.addToCartStore.includes(itemToAdd)) {
-        // Update the state by creating a new array with the new item
-        state.addToCartStore = [...state.addToCartStore, itemToAdd];
-      }
+      // Pass the entire state to the utility function
+      storingDataOnLocalStorage(state, "cart-items", newItem, "addToCartStore");
 
-      // You can keep your localStorage logic here if needed
-      // localStorage.setItem("cart", JSON.stringify(state.addToCartStore));
+      // Get the updated cart from local storage
+      const updatedCart = JSON.parse(localStorage.getItem("cart-items")) || [];
+
+      // Update state immutably
+      return {
+        ...state,
+        addToCartStore: updatedCart,
+      };
+    },
+
+    removeItem: (state, action) => {
+      const removeId = action.payload;
+
+      removeElementsFromLocalStorage(
+        state,
+        "cart-items",
+        removeId,
+        "addToCartStore"
+      );
+      // Make sure addToCartStore is an array
+
+      const updatedCart = JSON.parse(localStorage.getItem("cart-items")) || [];
+
+      // Update state immutably
+      return {
+        ...state,
+        addToCartStore: updatedCart,
+      };
+      // state.addToCartStore = Array.isArray(state.addToCartStore)
+      //   ? state.addToCartStore
+      //   : [];
+
+      // // Filter out the item to be removed
+      // const updatedCart = state.addToCartStore.filter(
+      //   (_, index) => index !== removeId
+      // );
+
+      // // Update state and localStorage
+      // state.addToCartStore = updatedCart;
+      // localStorage.setItem("cart-items", JSON.stringify(updatedCart));
     },
   },
 });
 
-export const { storeAddToCart } = addToCartSlice.actions;
+export const { storeAddToCart, removeItem } = addToCartSlice.actions;
 export default addToCartSlice.reducer;

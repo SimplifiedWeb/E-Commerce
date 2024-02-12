@@ -10,7 +10,7 @@ const Services_Card_Design = ({ about }) => {
         <div
           //   className={`main-card mx-2 w-full rounded-lg p-[3px] pt-[1px] h-[315px] cursor-pointer  border-[0.1px] border-gray-900 border-opacity-10 border-b-2 `}
 
-          className="flex w-full justify-center items-center gap-32 my-10"
+          className="flex w-full justify-center items-center gap-32 my-10 flex-wrap sm:gap-2  "
         >
           <div
             className={`first-card service-card w-[250px] h-[250px] ${

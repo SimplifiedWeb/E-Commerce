@@ -5,14 +5,12 @@ const initialState = {
   randomData: [],
   paginatedStore: [],
   storeSortedPaginatedData: [],
+  cancelOrders: [],
 };
 
 export const storeTransform = createTransform(
   (inboundState) => ({ store: inboundState.store }),
   (outboundState) => outboundState
-
-  // for entire state
-  // (inboundState) => ({ ...inboundState })
 );
 
 const allProduct = createSlice({
@@ -29,18 +27,25 @@ const allProduct = createSlice({
       state.storeSortedPaginatedData = action.payload;
     },
     getRandomData: (state) => {
-      // Use map to create a new array with the random items
-      state.randomData = state.store.map((item) => {
-        const category_name = Object.keys(item)[0];
-        const category_data = item[category_name];
+      state.randomData = Array.isArray(state.store)
+        ? state.store.map((item) => {
+            const category_name = Object.keys(item)[0];
+            const category_data = item[category_name];
 
-        if (category_data && category_data.length > 0) {
-          const randomIndex = Math.floor(Math.random() * category_data.length);
-          return category_data[randomIndex];
-        }
+            if (category_data && category_data.length > 0) {
+              const randomIndex = Math.floor(
+                Math.random() * category_data.length
+              );
+              return category_data[randomIndex];
+            }
 
-        return null; // or some default value if category_data is empty
-      });
+            return null; // or some default value if category_data is empty
+          })
+        : [];
+    },
+
+    setCancelOrders: (state, action) => {
+      state.cancelOrders = action.payload;
     },
   },
 });
@@ -50,5 +55,6 @@ export const {
   getRandomData,
   storePaginatedData,
   storeSortedPaginatedData,
+  setCancelOrders,
 } = allProduct.actions;
 export default allProduct.reducer;

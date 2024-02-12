@@ -1,27 +1,43 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Top_Add_Bar = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const { t, i18n } = useTranslation();
   const [confirmationDialogBox, setConfirmationDialogBox] = useState(false);
   const languages = [
     { id: "en", label: "English" },
-    { id: "es", label: "Spanish" },
-    { id: "fr", label: "French" },
+    { id: "ur", label: "Urdu" },
+    { id: "hi", label: "Hindi" },
+    { id: "ma", label: "Marathi" },
   ];
 
   const CaptureSelectOptions = (event) => {
-    setSelectedLanguage(event.target.value);
+    const selectedLanguageCode = event.target.value;
+    setSelectedLanguage(selectedLanguageCode);
     setConfirmationDialogBox(true);
+    i18n.changeLanguage(selectedLanguageCode);
   };
 
   return (
     <>
-      <div className="flex justify-between bg-black text-white p-1 text-sm">
-        <p className="text-center m-auto font-thin">
-          Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!{" "}
-          <span className="font-bold underline ml-2">ShopNow</span>
+      <div className="flex justify-between bg-black text-white p-1 text-sm max-w-none sm:max-w-991 md:max-w-767 lg:max-w-479">
+        <p className="text-center m-auto font-thin sm:text-sm">
+          {t("top-bar")}
+          <span className="font-bold underline ml-2 ">{t("shop-now")}</span>
+          {/* <span>{confirmationDialogBox && "Just For Implementation"}</span> */}
         </p>
-        <div className="relative language_options">
+        <div className="relative language_options flex items-center ">
+          <span
+            className={`text-red-500  ${
+              confirmationDialogBox && selectedLanguage !== "en"
+                ? "block"
+                : "hidden"
+            }`}
+          >
+            {confirmationDialogBox ? "Languages Implementation purposes" : null}
+          </span>
+
           <select
             id="languageSelect"
             onChange={CaptureSelectOptions}

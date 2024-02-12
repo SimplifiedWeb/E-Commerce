@@ -5,7 +5,7 @@ import Product_Second_Layer_Heading from "../../../../common/product_div_heading
 const Best_Selling_Parent = () => {
   return (
     <>
-      <div className="main  min-h-[66vh]   px-3 mt-[-8%]">
+      <div className="main  min-h-[66vh]   px-3 mt-[-10%] sm:mt-[9%]">
         <div className="heading">
           <Product_Main_Heading data={"This Month"} />
         </div>

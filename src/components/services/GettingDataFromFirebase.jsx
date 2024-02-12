@@ -62,8 +62,6 @@ const GettingDataFromFirebase = () => {
     return <p>{error}</p>;
   }
 
-  console.log(data);
-
   // Render your component with the fetched data
   return <div>{/* Render your component using the 'data' state */}</div>;
 };
