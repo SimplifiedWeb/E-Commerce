@@ -50,7 +50,7 @@ const Slider = () => {
           ))}
         </div>
 
-        <div className="details-container w-1/2 sm:w-[200px] relative p-6 ">
+        <div className="details-container w-1/2 sm:w-[200px] relative p-6 sm:p-4 ">
           {memoizedData.map((currElm, index) => (
             <div
               key={index}
