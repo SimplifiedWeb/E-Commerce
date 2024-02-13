@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Our Level-1 E-commerce Platform serves as a foundational project aimed at gaining insights into building a basic e-commerce website. Leveraging technologies such as React, Firebase, Redux Toolkit, and Tailwind CSS, we explore fundamental concepts in web development to provide users with a seamless shopping experience.
+Mine Level-1 E-commerce Platform serves as a foundational project aimed at gaining insights into building a basic e-commerce website. Leveraging technologies such as React, Firebase, Redux Toolkit, and Tailwind CSS, we explore fundamental concepts in web development to provide users with a seamless shopping experience.
 
 ## Goals
 
