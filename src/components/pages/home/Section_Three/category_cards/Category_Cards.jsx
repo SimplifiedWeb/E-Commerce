@@ -10,7 +10,7 @@ import {
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
-const CategoryCards = () => {
+const Category_Cards = () => {
   return (
     <div className="category-card flex flex-wrap justify-between items-center">
       <Link to="/category/smartphones" className="icon-box">
@@ -49,4 +49,4 @@ const CategoryCards = () => {
   );
 };
 
-export default CategoryCards;
+export default Category_Cards;

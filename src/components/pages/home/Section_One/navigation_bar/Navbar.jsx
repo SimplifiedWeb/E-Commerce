@@ -26,7 +26,7 @@ const Navbar = ({ mobile }) => {
   }, 200);
 
   const filteredData = data.filter((item) =>
-    item.product_name.toLowerCase().includes(typedValue.toLowerCase())
+    item.product_name?.toLowerCase().includes(typedValue.toLowerCase())
   );
 
   const underscoreToCamelCase = (str) => {
@@ -161,6 +161,11 @@ const Navbar = ({ mobile }) => {
               onMouseLeave={() => setIsTheDropDownActive(false)}
               ref={dropdownRef}
             >
+              <Link to="/add_product">
+                <button className="hover:bg-gray-800 p-2 rounded-md transition duration-300">
+                  Add Products
+                </button>
+              </Link>
               <Link to="/profile">
                 <button className="hover:bg-gray-800 p-2 rounded-md transition duration-300">
                   Manage My Account
@@ -180,6 +185,11 @@ const Navbar = ({ mobile }) => {
               <Link to="/reviews">
                 <button className="hover:bg-gray-800 p-2 rounded-md transition duration-300">
                   My Reviews
+                </button>
+              </Link>
+              <Link to="/my_added_products">
+                <button className="hover:bg-gray-800 p-2 rounded-md transition duration-300">
+                  My Added Products
                 </button>
               </Link>
               <button className="hover:bg-gray-800 p-2 rounded-md transition duration-300">

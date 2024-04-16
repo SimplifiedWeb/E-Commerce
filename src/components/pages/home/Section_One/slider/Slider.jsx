@@ -33,6 +33,12 @@ const Slider = () => {
     return () => clearInterval(intervalId);
   }, [images]);
 
+  // const first = {
+  //   /// string.
+  //   backgroundColor: "green",
+  // };
+  const something = { transition: "opacity 0.5s ease-in-out" };
+
   return (
     <div className="slider-container mt-10 mx-auto relative">
       <div className="slider w-[740px] h-[403px] ml-[-10px] sm:w-[400px] sm:h-[350px] relative overflow-hidden rounded-lg shadow-md flex">
@@ -57,7 +63,7 @@ const Slider = () => {
               className={`transition-opacity duration-500 mt-[-8px] ${
                 index === activeIndex ? "opacity-100" : "opacity-0 hidden"
               } `}
-              style={{ transition: "opacity 0.5s ease-in-out" }}
+              style={something}
             >
               <h3
                 className={`text-3xl font-bold mb-2  ${

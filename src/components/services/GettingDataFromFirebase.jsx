@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../config/Firebase"; // Import your Firebase configuration
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllProduct } from "../../redux/slices/allProducts";
 const GettingDataFromFirebase = () => {
   const [data, setData] = useState(null);
+  const stateChanges = useSelector((state) => state.addProducts.stateChanges);
   const [isFetchedData, setIsFetchedData] = useState(
     localStorage.getItem("apiFetched") === "true" || false
   );
@@ -16,7 +17,7 @@ const GettingDataFromFirebase = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (!isFetchedData) {
+        if (!isFetchedData || stateChanges) {
           const productCollection = collection(db, "products");
           const querySnapshot = await getDocs(productCollection);
 
@@ -52,7 +53,7 @@ const GettingDataFromFirebase = () => {
 
     // Optionally return a cleanup function
     return () => {};
-  }, [isFetchedData, dispatch]);
+  }, [isFetchedData, stateChanges, dispatch]);
 
   if (loading) {
     return <p>Loading...</p>;

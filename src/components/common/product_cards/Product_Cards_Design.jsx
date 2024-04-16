@@ -12,7 +12,14 @@ import { Link, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const Product_Cards_Design = React.memo(
-  ({ currElm, listItemClass, handleDeleteWishList, index, flexWrap }) => {
+  ({
+    currElm,
+    listItemClass,
+    handleDeleteWishList,
+    handleDeleteProduct,
+    index,
+    flexWrap,
+  }) => {
     const location = useLocation();
     const [isHover, setIsHover] = useState(false);
     const [deleteIcon, setDeleteIcon] = useState(false);
@@ -78,6 +85,10 @@ const Product_Cards_Design = React.memo(
       [dispatch, isFavorite, setIsFavorite]
     );
 
+    // useEffect(() => {
+    //   isFa
+    // }, [location.pathname === "/my_added_products"])
+
     return (
       <div
         className={`
@@ -115,15 +126,24 @@ const Product_Cards_Design = React.memo(
               </span>
             </div>
           </Link>
+
           {!listItemClass && (
             <>
-              {deleteIcon ? (
+              {deleteIcon || location.pathname === "/my_added_products" ? (
                 // If deleteIcon is true, render this SVG
                 <button
                   className={`fav absolute top-0 right-2 transform transition-transform duration-300 ${
                     isFavorite ? "scale-110" : ""
                   }`}
-                  onClick={() => handleDeleteWishList(index)}
+                  onClick={() => {
+                    if (location.pathname !== "/my_added_products") {
+                      handleDeleteWishList(index);
+                    } else {
+                      handleDeleteProduct(currElm);
+                    }
+                  }}
+
+                  // onClick={() =>handleDeleteWishList(index) }
                 >
                   {/* SVG for deleteIcon */}
                   <svg

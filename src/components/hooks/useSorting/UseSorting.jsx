@@ -30,6 +30,7 @@ const UseSorting = ({ data }) => {
         break;
       case "lowPrice":
         console.log("this is lowPrice");
+        console.log(data);
         dispatch(setLowToHigh(data));
         // setSorting(sortedData);
 

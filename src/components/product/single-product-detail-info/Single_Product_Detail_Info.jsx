@@ -105,25 +105,27 @@ const Single_Product_Detail_Info = ({ findSpecificData }) => {
                 Features:
               </span>
               <div className="flex gap-2 w-[700px] justify-between flex-wrap p-3 sm:flex-col">
-                {highlights?.map((item, index) => (
-                  <div key={index} className="flex ">
-                    {/* First Column (Check Icon) */}
-                    <div className=" pr-2 ">
-                      <CheckOutlinedIcon
-                        style={{
-                          width: "16px",
-                          color: "#0af03c",
-                          fontWeight: "bold",
-                        }}
-                      />
-                    </div>
+                {(Array.isArray(highlights) ? highlights : [highlights]).map(
+                  (item, index) => (
+                    <div key={index} className="flex">
+                      {/* First Column (Check Icon) */}
+                      <div className="pr-2">
+                        <CheckOutlinedIcon
+                          style={{
+                            width: "16px",
+                            color: "#0af03c",
+                            fontWeight: "bold",
+                          }}
+                        />
+                      </div>
 
-                    {/* Second Column (Text) */}
-                    <div className="flex justify-start sm:flex-wrap items-start w-[280px] ">
-                      <h3 className="">{item}</h3>
+                      {/* Second Column (Text) */}
+                      <div className="flex justify-start sm:flex-wrap items-start w-[280px]">
+                        <h3>{item}</h3>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                )}
               </div>
 
               <span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900  dark:text-red-300">

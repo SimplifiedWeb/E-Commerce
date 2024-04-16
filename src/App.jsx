@@ -9,8 +9,20 @@ import Loading from "./components/common/spinner/Loading";
 import AuthProvider from "./components/pages/auth/authContext/AuthContext";
 import Protected_Auth_Route from "./components/pages/auth/protected-auth-route/Protected_Auth_Route";
 import ConnectionStatus from "./components/pages/home/ConnectionStatus";
+// import All_Added_Products_Parents from "./components/pages/my_products/all_my_added_products/All_Added_Products_Parents";
+const AllAddedProducts = lazy(() =>
+  import(
+    "./components/pages/my_products/all_my_added_products/All_Added_Products_Parents"
+  )
+);
 const LazyGettingDataFromFirebase = lazy(() =>
   import("./components/services/GettingDataFromFirebase")
+);
+
+const AddProducts = lazy(() =>
+  import(
+    "./components/pages/add_products/add_products_parent/Add_Product_Parent"
+  )
 );
 
 const Home = lazy(() => import("./components/pages/home/Home"));
@@ -32,6 +44,13 @@ const Register = lazy(() =>
 const ContactParent = lazy(() =>
   import("./components/pages/contact/contact-parent/Contact_Parent")
 );
+
+// import Contact_Parent from "./components/pages/contact/contact-parent/Contact_Parent";
+
+// const ContactParent = lazy(() => {
+//   import("./components/pages/contact/contact-parent/Contact_Parent");
+// });
+
 const WishListParent = lazy(() =>
   import("./components/wishList/wishList-parent/WishList_Parent")
 );
@@ -77,6 +96,10 @@ const App = () => {
                   }
                 />
                 <Route path="/cancelOrders" element={<CancelOrdersParent />} />
+                <Route
+                  path="/my_added_products"
+                  element={<AllAddedProducts />}
+                />
 
                 <Route path="/orders" element={<OrderPage />} />
                 <Route path="/reviews" element={<Pending_Work />} />
@@ -85,6 +108,7 @@ const App = () => {
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/contact" element={<ContactParent />} />
+                <Route path="/add_product" element={<AddProducts />} />
                 <Route
                   path="/product/:categoryName/:name/:categoryId"
                   element={<SingleProductDetailsParent />}

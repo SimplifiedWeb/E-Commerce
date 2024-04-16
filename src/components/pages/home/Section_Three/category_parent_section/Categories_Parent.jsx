@@ -1,6 +1,6 @@
 import Product_Main_Heading from "../../../../common/product_div_headings/Product_Main_Heading";
 import Product_Second_Layer_Heading from "../../../../common/product_div_headings/Product_Second_Layer_Heading";
-import Category_Cards from "../Category_Cards/Category_Cards";
+import Category_Cards from "../category_cards/Category_Cards";
 
 const Categories_Parent = () => {
   return (

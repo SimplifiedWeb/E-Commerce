@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
   applyAllFilter,
@@ -21,6 +21,7 @@ const UseCategoryAndFiltering = ({ store, selectedOptions }) => {
         default:
           console.log("something went wrong");
       }
+      // dispatch(applyAllFilter(store));
     };
 
     handleFilterChange();

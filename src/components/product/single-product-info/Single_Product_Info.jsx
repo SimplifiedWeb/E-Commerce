@@ -17,8 +17,14 @@ const Single_Product_Info = ({ findSpecificData, categoryName, name }) => {
   const navigate = useNavigate();
   const [showData, setShowData] = useState();
   // eslint-disable-next-line react/prop-types
-  const { product_name, rating, original_price, in_stock, category } =
-    findSpecificData;
+  const {
+    product_name,
+    rating,
+    original_price,
+    current_price,
+    in_stock,
+    category,
+  } = findSpecificData;
 
   const handleBuyNow = (data) => {
     dispatch(storeAddToCart(data));
@@ -56,7 +62,9 @@ const Single_Product_Info = ({ findSpecificData, categoryName, name }) => {
           </h1>
         </div>
         <div className="price text-gray-800 mt-1 flex justify-between gap-10 ">
-          <h1 className="text-3xl font-semibold">$ {original_price}</h1>
+          <h1 className="text-3xl font-semibold">
+            $ {original_price || current_price}
+          </h1>
           <div>
             <button
               onClick={() => handleAdd(findSpecificData)}

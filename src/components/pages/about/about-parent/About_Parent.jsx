@@ -49,7 +49,7 @@ const About_Parent = () => {
 
       <div className="second-section relative min-h-[50vh] flex justify-center items-center gap-6 sm:gap-10 flex-wrap sm:mt-7">
         <div
-          className="first-card service-card w-[250px] h-[250px] bg-[#fff] hover:bg-[#db4444] hover:text-white transition-all duration-100 cursor-pointer hover:translate-y-1"
+          className="first-card service-card w-[250px] h-[2560px] bg-[#fff] hover:bg-[#db4444] hover:text-white transition-all duration-100 cursor-pointer hover:translate-y-1"
           style={{
             boxShadow:
               "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",

@@ -1,6 +1,10 @@
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-import useFormikAndYup from "../../../hooks/useCustomFormikAndYup/useFormikAndYup";
+// import useFormikAndYup from "../../../hooks/useCustomFormikAndYup/useFormikAndYup";
+
+import useFormikAndYup from "../../../hooks/useCustomFormikAndYup/UseFormikAndYup";
+
+// import useFormikAndYup from '../../../hooks/useCustomFormikAndYup/UseFormikAndYup'
 import Contact_Form from "../contact-form/Contact_Form";
 import Contact_Info from "../contact-information/Contact_Info";
 

@@ -1,4 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
+import addProducts from "../slices/addProducts";
 import addToCartSlice from "../slices/addToCartSlice";
 import addWishListSlice from "../slices/addWishListSlice";
 import allProducts from "../slices/allProducts";
@@ -18,5 +19,6 @@ const rootReducer = combineReducers({
   addToCartSlice: addToCartSlice,
   addWishListSlice: addWishListSlice,
   checkoutSlice: checkoutSlice,
+  addProducts: addProducts,
 });
 export default rootReducer;

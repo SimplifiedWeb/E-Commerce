@@ -58,3 +58,7 @@ export const getProductData = (data) => {
   // console.log(secondStep);
   return secondStep;
 };
+
+// export const addDataToFirebase = (data) => {
+//   return data;
+// };

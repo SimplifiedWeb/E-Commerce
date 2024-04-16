@@ -13,7 +13,9 @@ import {
 import { useEffect } from "react";
 import { useState } from "react";
 import { createContext, useContext } from "react";
+// import { auth, provider } from "../../../../../config/Firebase";
 import { auth, provider } from "../../../../../config/Firebase";
+// import { ProviderId } from "firebase/auth";
 
 const AuthContext = createContext();
 

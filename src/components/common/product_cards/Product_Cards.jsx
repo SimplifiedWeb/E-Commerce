@@ -9,17 +9,89 @@ import { Link, useLocation } from "react-router-dom";
 import { resetFilters } from "../../../redux/slices/filterSlice";
 import { useDispatch } from "react-redux";
 import { removeWishList } from "../../../redux/slices/addWishListSlice";
+import { deleteProduct } from "../../../redux/slices/addProducts";
+import Delete_Confirmation from "../../pages/my_products/delete_products/Delete_Confirmation";
+import Delete_Product_From_Firebase from "../../pages/my_products/delete_products/Delete_Product_From_Firebase";
+import { collection, getDocs, updateDoc } from "firebase/firestore";
+import { db } from "../../../../config/Firebase";
+import toast from "react-hot-toast";
 
 const Product_Cards = ({ category, flexWrap, btn, mainList }) => {
   const { getStore } = ProductsHook(category);
   const location = useLocation();
   const dispatch = useDispatch();
   const [data, setDataToUse] = useState([]);
+  const [confirmationDelete, setConfirmationDelete] = useState(false);
+  const [deleteData, setDeleteData] = useState();
+  // const [deleteData, setDeleteData] = useState(undefined);
 
   const [wishListItems, setWishListItems] = useState(() => {
     const storedItem = JSON.parse(localStorage.getItem("wishList-items")) || [];
     return storedItem || [];
   });
+
+  const myAllAddedProducts = useSelector(
+    (state) => state.addProducts.myAddedProducts
+  );
+
+  const handleDeleteProduct = (elm) => {
+    // console.log(index);
+    setDeleteData(elm);
+    setConfirmationDelete(true);
+    // dispatch(deleteProduct(elm));
+    // setDeleteData(elm);
+  };
+  const handleConfirmDelete = async () => {
+    if (deleteData) {
+      try {
+        // Delete the product from Firebase
+        await deleteProductFromFirebase(deleteData);
+
+        // Dispatch delete action here if needed
+        // dispatch(deleteProduct(deleteData));
+
+        // Reset the delete candidate and close the confirmation modal
+        setDeleteData(null);
+        setConfirmationDelete(false);
+      } catch (error) {
+        console.error("Error deleting product from Firebase:", error);
+      }
+    }
+  };
+  const deleteProductFromFirebase = async (deleteData) => {
+    try {
+      const productCollectionRef = collection(db, "products");
+
+      const querySnapshot = await getDocs(productCollectionRef);
+
+      querySnapshot.forEach(async (doc) => {
+        const docRef = doc.ref; // Get the document reference
+        const data = doc.data().data; // Get the data array from the document
+        const updatedData = data.filter((item) => item.id !== deleteData.id);
+        await updateDoc(docRef, { data: updatedData });
+      });
+
+      toast.success("Document updated successfully!!!");
+    } catch (error) {
+      console.log("Error from the Delete Function ", error);
+    }
+  };
+
+  useEffect(() => {
+    if (deleteData) {
+      // Call the function to delete the product from Firebase
+      deleteProductFromFirebase(deleteData);
+    }
+  }, [deleteData]);
+
+  const handleCancelDelete = () => {
+    setDeleteData(null); // Reset the delete candidate
+    setConfirmationDelete(false); // Close the confirmation modal
+  };
+
+  // console.log(category);
+
+  // console.log(myAllAddedProducts);
 
   const handleDeleteWishList = (index) => {
     // Dispatch the action to update Redux state
@@ -92,6 +164,8 @@ const Product_Cards = ({ category, flexWrap, btn, mainList }) => {
       category === "wishList"
     ) {
       return wishListItems;
+    } else if (category === "myAddedProducts") {
+      return myAllAddedProducts;
     } else if (filteredPriceRange && filteredPriceRange.length > 0) {
       return filteredPriceRange;
     } else if (sortedPaginated && sortedPaginated.length > 0) {
@@ -120,6 +194,7 @@ const Product_Cards = ({ category, flexWrap, btn, mainList }) => {
     category,
     wishListItems,
     cancelOrders,
+    myAllAddedProducts,
   ]);
   // useEffect(() => {
   //   setDataToUse(determineDataToUse());
@@ -171,8 +246,13 @@ const Product_Cards = ({ category, flexWrap, btn, mainList }) => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <div
-        className={`
+      {myAllAddedProducts?.length === 0 ? (
+        <p className="text-center text-gray-500 text-lg mt-8 ml-4">
+          No products added yet.
+        </p>
+      ) : (
+        <div
+          className={`
           cards-container relative 
           ${
             list
@@ -182,25 +262,27 @@ const Product_Cards = ({ category, flexWrap, btn, mainList }) => {
               : "flex min-w-full mt-5 mx-4 overflow-hidden"
           }
         `}
-        style={{
-          transform: `translateX(${-hiddenOffset}vw)`,
-          transition: "transform ease-in 0.4s",
-          overflow: "visible",
-        }}
-      >
-        {data?.map((currElm, index) => (
-          <Product_Cards_Design
-            key={index}
-            currElm={currElm}
-            flexWrap={flexWrap}
-            mainList={mainList}
-            listItemClass={list}
-            isListView={list}
-            handleDeleteWishList={handleDeleteWishList}
-            index={index}
-          />
-        ))}
-      </div>
+          style={{
+            transform: `translateX(${-hiddenOffset}vw)`,
+            transition: "transform ease-in 0.4s",
+            overflow: "visible",
+          }}
+        >
+          {data?.map((currElm, index) => (
+            <Product_Cards_Design
+              key={index}
+              currElm={currElm}
+              flexWrap={flexWrap}
+              mainList={mainList}
+              listItemClass={list}
+              handleDeleteProduct={handleDeleteProduct}
+              isListView={list}
+              handleDeleteWishList={handleDeleteWishList}
+              index={index}
+            />
+          ))}
+        </div>
+      )}
 
       {btn && (
         <div className="button w-full">
@@ -216,6 +298,15 @@ const Product_Cards = ({ category, flexWrap, btn, mainList }) => {
           />
         </div>
       )}
+      <Delete_Confirmation
+        isOpen={confirmationDelete}
+        message="Are you sure you want to delete this product?"
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+      />
+      {/* {confirmationDelete && (
+        <Delete_Product_From_Firebase deleteData={deleteData} />
+      )} */}
     </div>
   );
 };
