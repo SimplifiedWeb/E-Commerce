@@ -13,7 +13,7 @@ Features:
 
 • Implement a shopping cart with item quantity and total cost.
 
- 4. Authentication System with E-commerce Bind With it:
+4. Authentication System with E-commerce Bind With it:
 
 Goals:
 
